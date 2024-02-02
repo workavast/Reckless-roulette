@@ -1,6 +1,6 @@
 namespace Cards
 {
-    public abstract class CardBase
+    public abstract class CardProcessorBase
     {
         public abstract void UseCard();
     }

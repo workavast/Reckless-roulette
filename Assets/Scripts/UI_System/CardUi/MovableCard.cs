@@ -1,6 +1,7 @@
 using System;
 using Cards;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI_System.CardUi
 {
@@ -8,13 +9,14 @@ namespace UI_System.CardUi
     public class MovableCard : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
+        [SerializeField] private Image FillImage;
 
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
 
         private RectTransform _rectTransform;
         private Transform _destinationTarget;
-        private CardBase _card;
+        private CardProcessorBase _card;
         private bool _isMove;
 
         private event Action<float> OnUpdate;
@@ -26,10 +28,13 @@ namespace UI_System.CardUi
         {
             _rectTransform = GetComponent<RectTransform>();
         }
+        
+        public void HandleUpdate(float time) => OnUpdate?.Invoke(time);
 
-        public void SetCardData(CardBase card)
+        public void SetCardData(CardProcessorBase card, Sprite sprite)
         {
             _card = card;
+            FillImage.sprite = sprite;
         }
         
         public void SetDestination(int holderIndex, Transform cardHolder)
@@ -44,9 +49,10 @@ namespace UI_System.CardUi
             _isMove = true;
         }
 
-        private void Update()
+        public void UseCard()
         {
-            OnUpdate?.Invoke(Time.deltaTime);
+            _card.UseCard();
+            OnUse?.Invoke(HolderIndex);
         }
 
         private void Move(float time)
@@ -65,12 +71,6 @@ namespace UI_System.CardUi
                 
                 OnReachDestination?.Invoke();
             }
-        }
-
-        public void UseCard()
-        {
-            _card?.UseCard();
-            OnUse?.Invoke(HolderIndex);
         }
     }
 }

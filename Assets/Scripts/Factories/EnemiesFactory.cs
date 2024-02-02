@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Enemies;
 using EnumValuesExtension;
@@ -20,7 +19,8 @@ namespace Factories
             {
                 var enemyParent = new GameObject
                 {
-                    name = enemyType.ToString()
+                    name = enemyType.ToString(),
+                    transform = {parent = transform}
                 };
                 _enemiesParents.Add(enemyType, enemyParent.transform);
             }
