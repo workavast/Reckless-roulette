@@ -2,6 +2,7 @@ using Cards;
 using CustomTimer;
 using GameCycle;
 using Managers;
+using UI_System;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ public class GameplayController : MonoBehaviour
 { 
     [SerializeField] private CardsRepository cardsRepository;
 
+    [Inject] private UI_Controller _uiController;
     [Inject] private CardLine _cardLine;
     [Inject] private PlayerHero _playerHero;
     [Inject] private PathManager _pathManager;
@@ -45,13 +47,13 @@ public class GameplayController : MonoBehaviour
     {
         _timer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
-        Debug.Log("you loosed");
+        _uiController.SetScreen(ScreenType.GameplayLoose);
     }
 
     private void CompleteGame()
     {
         _timer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
-        Debug.Log("you wined");
+        _uiController.SetScreen(ScreenType.GameplayWin);
     }
 }

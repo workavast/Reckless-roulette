@@ -1,6 +1,6 @@
 namespace UI_System.UI_Screens
 {
-    public class Gameplay : UI_ScreenBase
+    public class GameplayWinScreen : UI_ScreenBase
     {
         
     }

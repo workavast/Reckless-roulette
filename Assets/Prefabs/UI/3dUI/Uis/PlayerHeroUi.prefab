@@ -150,6 +150,7 @@ MonoBehaviour:
   selectable: {fileID: 0}
   canvas: {fileID: 2697182556451591372}
   healthBar: {fileID: 516756753348611367}
+  selectionField: {fileID: 2285708613470488540}
 --- !u!1 &6691078532974480129
 GameObject:
   m_ObjectHideFlags: 0

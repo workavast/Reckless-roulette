@@ -48,18 +48,16 @@ namespace UI_System
         
             switch (screenType)
             {     
-                // case ScreenType.MainMenuHangar:
-                //     return GetScreen<MainMenuHangarScreen>();
-                // case ScreenType.MainMenuLevelSelection:
+                case ScreenType.MainMenu:
+                    return GetScreen<MainMenuScreen>();
+                // case ScreenType.MainMenuRules:
                 //     return GetScreen<MainMenuMissionSelectionScreen>();
-                // case ScreenType.MainMenuSettings:
-                //     return GetScreen<MainMenuSettingsScreen>();
-                // case ScreenType.GameplayMain:
-                //     return GetScreen<GameplayMainScreen>();
-                // case ScreenType.GameplayMenu:
-                //     return GetScreen<GameplayMenuScreen>();
-                // case ScreenType.GameplayMissionEnd:
-                //     return GetScreen<GameplayMissionEndScreen>();
+                case ScreenType.GameplayWin:
+                    return GetScreen<GameplayWinScreen>();
+                case ScreenType.GameplayMain:
+                    return GetScreen<GameplayMainScreen>();
+                case ScreenType.GameplayLoose:
+                    return GetScreen<GameplayLooseScreen>();
                 default:
                     Debug.LogWarning("Error: invalid parameter in GetScreenByEnum(ScreenEnum screen)");
                     return default;
