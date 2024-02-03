@@ -1,4 +1,5 @@
 using System.Linq;
+using Cards.Configs;
 using EnumValuesExtension;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Cards
         private readonly CardsRepository _cardsRepository;
         private readonly CardLine _cardLine;
 
-        private CardType[] _cardTypes;
+        private readonly CardType[] _cardTypes;
         
         public CardCreatorProcessor(CardsRepository cardsRepository, CardLine cardLine)
         {

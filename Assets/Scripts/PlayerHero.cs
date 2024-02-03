@@ -1,4 +1,5 @@
 using System;
+using Cards;
 using CustomTimer;
 using Enemies;
 using EventBusExtension;
@@ -9,7 +10,8 @@ using SomeStorages;
 using UnityEngine;
 using Zenject;
 
-public class PlayerHero : MonoBehaviour, IEventReceiver<EnemyReachFightPoint>, IHaveUI, IGameCycleUpdate
+[RequireComponent(typeof(Collider2D))]
+public class PlayerHero : MonoBehaviour, IEventReceiver<EnemyReachFightPoint>, IHaveUI, IGameCycleUpdate, ICardTarget
 {
     [Inject] private EventBus _eventBus;
     [Inject] private IGameCycleController _gameCycleController;
@@ -48,6 +50,12 @@ public class PlayerHero : MonoBehaviour, IEventReceiver<EnemyReachFightPoint>, I
         OnUpdate?.Invoke(Time.deltaTime);
     }
 
+    public void TakeHeal(float heal)
+    {
+        heal = Mathf.Clamp(heal, 0, float.MaxValue);
+        healthPoints.ChangeCurrentValue(heal);
+    }
+    
     public void TakeDamage(float damage)
     {
         healthPoints.ChangeCurrentValue(-damage);

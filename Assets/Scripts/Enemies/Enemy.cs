@@ -1,4 +1,5 @@
 using System;
+using Cards;
 using CustomTimer;
 using EventBusExtension;
 using Events;
@@ -9,7 +10,8 @@ using Zenject;
 
 namespace Enemies
 {
-    public class Enemy : MonoBehaviour, IEventReceiver<PlayerHeroMove>, IHaveUI
+    [RequireComponent(typeof(Collider2D))]
+    public class Enemy : MonoBehaviour, IEventReceiver<PlayerHeroMove>, IHaveUI, ICardTarget
     {
         [SerializeField] private SomeStorageFloat healthPoints;
         [SerializeField] private float attackDamage;

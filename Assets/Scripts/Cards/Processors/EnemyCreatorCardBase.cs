@@ -10,9 +10,11 @@ namespace Cards
         protected abstract EnemyType EnemyType { get; }
         [Inject] private EnemiesManager _enemiesFactory;
         
-        public override void UseCard()
+        public override bool TryUseCard(ICardTarget target)
         {
             _enemiesFactory.SpawnEnemy(EnemyType);
+
+            return true;
         }
     }
 }

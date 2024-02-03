@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cards;
+using Cards.Configs;
 using GameCycle;
 using UI_System.CardUi;
 using UnityEngine;
@@ -51,7 +52,9 @@ public class CardLine : MonoBehaviour, IGameCycleUpdate, IGameCycleEnter, IGameC
         _container.Inject(cardProcessor);
         
         var movableCard = Instantiate(cardPrefab, cardParent).GetComponent<MovableCard>();
+        //need cus without this card spawned in the center of screen for one frame
         movableCard.transform.position = cardSpawnPos.position;
+        movableCard.SetStartPosition(cardSpawnPos);
         movableCard.SetCardData(cardProcessor, cardConfig.Sprite);
         movableCard.OnUse += RemoveCard;
         _movableCards.Add(movableCard);

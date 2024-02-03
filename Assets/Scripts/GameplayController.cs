@@ -1,4 +1,5 @@
 using Cards;
+using Cards.Configs;
 using CustomTimer;
 using GameCycle;
 using Managers;

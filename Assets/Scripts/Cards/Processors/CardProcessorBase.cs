@@ -2,6 +2,6 @@ namespace Cards
 {
     public abstract class CardProcessorBase
     {
-        public abstract void UseCard();
+        public abstract bool TryUseCard(ICardTarget target);
     }
 }

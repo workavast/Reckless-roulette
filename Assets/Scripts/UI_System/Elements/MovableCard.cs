@@ -1,20 +1,25 @@
 using System;
 using Cards;
+using DragAndDrop;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI_System.CardUi
 {
     [RequireComponent(typeof(RectTransform))]
-    public class MovableCard : MonoBehaviour
+    public class MovableCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         [SerializeField] private float moveSpeed;
         [SerializeField] private Image FillImage;
+        [SerializeField] private Image dragImage;
 
+        private bool _isDrag;
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
         public bool Interactable { get; private set; } = true;
 
+        private Vector3 _currentCardLinePosition;
         private RectTransform _rectTransform;
         private Transform _destinationTarget;
         private CardProcessorBase _card;
@@ -28,10 +33,17 @@ namespace UI_System.CardUi
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
+            _currentCardLinePosition = _rectTransform.position;
         }
         
         public void HandleUpdate(float time) => OnUpdate?.Invoke(time);
 
+        //need cus in the awake dont work cus card take spawn position after instantiate
+        public void SetStartPosition(Transform startTransform)
+        {
+            _currentCardLinePosition = startTransform.position;
+        }
+        
         public void SetCardData(CardProcessorBase card, Sprite sprite)
         {
             _card = card;
@@ -49,36 +61,91 @@ namespace UI_System.CardUi
             
             _isMove = true;
         }
-
-        public void UseCard()
-        {
-            if(!Interactable) return;
-            
-            _card.UseCard();
-            OnUse?.Invoke(HolderIndex);
-        }
-
+        
         private void Move(float time)
         {
-            _rectTransform.Translate(Vector3.left * (moveSpeed * time));
+            // _rectTransform.Translate(Vector3.left * (moveSpeed * time));
+            //
+            // if (_rectTransform.position.x <= _destinationTarget.position.x)
+            // {
+            //     var pos = _rectTransform.position;
+            //     pos.x = _destinationTarget.position.x;
+            //     
+            //     _rectTransform.position = pos;
+            //     OnUpdate -= Move;
+            //     _isMove = false;
+            //     IsReachDestination = true;
+            //     
+            //     OnReachDestination?.Invoke();
+            // }
             
-            if (_rectTransform.position.x <= _destinationTarget.position.x)
+            _currentCardLinePosition += Vector3.left * (moveSpeed * time);
+            
+            if (_currentCardLinePosition.x <= _destinationTarget.position.x)
             {
-                var pos = _rectTransform.position;
+                var pos = _currentCardLinePosition;
                 pos.x = _destinationTarget.position.x;
                 
-                _rectTransform.position = pos;
+                _currentCardLinePosition = pos;
                 OnUpdate -= Move;
                 _isMove = false;
                 IsReachDestination = true;
                 
                 OnReachDestination?.Invoke();
             }
+            
+            if(!_isDrag) 
+                _rectTransform.position = _currentCardLinePosition;
         }
-
+        
         public void SwitchInteractionState(bool interactable)
         {
             Interactable = interactable;
+        }
+        
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if(!Interactable) return;
+
+            _isDrag = true;
+            dragImage.raycastTarget = false;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            GameObject target = eventData.pointerCurrentRaycast.gameObject;
+            ICardTarget cardTarget = null;
+            if (target != null)
+                cardTarget = target.GetComponent<ICardTarget>();
+            else
+                cardTarget = CastRaycast();
+
+            if (_card.TryUseCard(cardTarget))
+                OnUse?.Invoke(HolderIndex);
+
+            _rectTransform.position = _currentCardLinePosition;
+            
+            _isDrag = false;
+            dragImage.raycastTarget = true;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _rectTransform.position = eventData.position;
+        }
+
+        private ICardTarget CastRaycast()
+        {
+            var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
+            // var castRes = Physics2D.Raycast(point, Vector3.forward, 100);
+            var castRes = Physics2D.Raycast(point, Vector2.zero);
+
+            ICardTarget res = null;
+            if(castRes)
+                castRes.collider.gameObject.TryGetComponent(out res);
+
+            return res;
         }
     }
 }

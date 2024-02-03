@@ -5,5 +5,6 @@ namespace Cards
         GreenSlimeSpawner = 0,
         BlueSlimeSpawner = 10,
         RedSlimeSpawner = 20,
+        HealCard = 30
     }
 }

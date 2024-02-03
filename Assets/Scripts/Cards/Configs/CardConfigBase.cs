@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards
+namespace Cards.Configs
 {
     public abstract class CardConfigBase : ScriptableObject
     {

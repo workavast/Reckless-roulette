@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards
+namespace Cards.Configs
 {
     [CreateAssetMenu(fileName = "BlueSlimeCardConfig", menuName = "Cards/BlueSlimeCardConfig")]
     public class BlueSlimeCardConfig : CardConfigBase
