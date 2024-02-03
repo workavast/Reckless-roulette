@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1610729be8328954583665d511116547
+guid: bebb1532d1b53af46b00bdcde1a529cc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slime idle red_0
+      name: Character attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b321557ba1618a74ba98a569bb027d14
-      internalID: -1885535943
+      spriteID: c5d08f25bd68eb34784b6716ad7213a0
+      internalID: 963688518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime idle red_1
+      name: Character attack_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cd0aa89da947dc409923f30df8151c7
-      internalID: -804694579
+      spriteID: 41fbceb740748e14b98f05674c589a70
+      internalID: -562675557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime idle red_2
+      name: Character attack_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 256
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98a52b5adad3a39498245466c0b3032c
-      internalID: 381462833
+      spriteID: 0a6523dcb5407dc40a67b9d8cb54ce39
+      internalID: -34704465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime idle red_3
+      name: Character attack_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 384
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +194,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bed82d8fd861c3540afe854ec3f74fc7
-      internalID: -285717714
+      spriteID: 85272d0789148a343853c95452ad2382
+      internalID: 135151906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character attack_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9088818d308b2342b9ea700f9b4feca
+      internalID: 766500491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character attack_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb49082ce20ab6444a31f47e65cf74cc
+      internalID: -1514763696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character attack_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317e4c2ae6e48414098bde6d8b8ebe3b
+      internalID: -1784699031
       vertices: []
       indices: 
       edges: []
@@ -203,7 +266,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d8f508e9f9583d44b95da4322b837829
+    spriteID: 4eb1a679ca335f849a1853ac39914e6d
     internalID: 0
     vertices: []
     indices: 
@@ -211,10 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Slime idle red_0: -1885535943
-      Slime idle red_1: -804694579
-      Slime idle red_2: 381462833
-      Slime idle red_3: -285717714
+      Character attack_0: 963688518
+      Character attack_1: -562675557
+      Character attack_2: -34704465
+      Character attack_3: 135151906
+      Character attack_4: 766500491
+      Character attack_5: -1514763696
+      Character attack_6: -1784699031
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

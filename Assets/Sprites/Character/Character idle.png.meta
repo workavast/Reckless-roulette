@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1610729be8328954583665d511116547
+guid: da74e94f5decb9a4bafd2ffab27ea51d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slime idle red_0
+      name: Character idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b321557ba1618a74ba98a569bb027d14
-      internalID: -1885535943
+      spriteID: e34773623b1d3194fb80518aeaf9b495
+      internalID: -1346854280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime idle red_1
+      name: Character idle_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,50 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cd0aa89da947dc409923f30df8151c7
-      internalID: -804694579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime idle red_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98a52b5adad3a39498245466c0b3032c
-      internalID: 381462833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime idle red_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bed82d8fd861c3540afe854ec3f74fc7
-      internalID: -285717714
+      spriteID: 387e5f8e141b23d459c9f081d90e1463
+      internalID: 2013000290
       vertices: []
       indices: 
       edges: []
@@ -203,7 +161,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d8f508e9f9583d44b95da4322b837829
+    spriteID: 67832b309598c6844865de16bab8693a
     internalID: 0
     vertices: []
     indices: 
@@ -211,10 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Slime idle red_0: -1885535943
-      Slime idle red_1: -804694579
-      Slime idle red_2: 381462833
-      Slime idle red_3: -285717714
+      Character idle_0: -1346854280
+      Character idle_1: 2013000290
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
