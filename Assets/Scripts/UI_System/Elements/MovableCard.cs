@@ -13,6 +13,7 @@ namespace UI_System.CardUi
 
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
+        public bool Interactable { get; private set; } = true;
 
         private RectTransform _rectTransform;
         private Transform _destinationTarget;
@@ -51,6 +52,8 @@ namespace UI_System.CardUi
 
         public void UseCard()
         {
+            if(!Interactable) return;
+            
             _card.UseCard();
             OnUse?.Invoke(HolderIndex);
         }
@@ -71,6 +74,11 @@ namespace UI_System.CardUi
                 
                 OnReachDestination?.Invoke();
             }
+        }
+
+        public void SwitchInteractionState(bool interactable)
+        {
+            Interactable = interactable;
         }
     }
 }

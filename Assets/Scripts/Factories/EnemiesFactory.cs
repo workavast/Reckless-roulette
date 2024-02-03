@@ -2,14 +2,17 @@ using System.Collections.Generic;
 using Enemies;
 using EnumValuesExtension;
 using UnityEngine;
+using Zenject;
 
 namespace Factories
 {
     public class EnemiesFactory : MonoBehaviour
     {
-        [SerializeField] private DictionaryInspector<EnemyType, GameObject> prefabs;
+        [SerializeField] private DictionaryInspector<EnemyType, Enemy> prefabs;
 
         private readonly Dictionary<EnemyType, Transform> _enemiesParents = new ();
+
+        [Inject] private DiContainer _container;
         
         private void Awake()
         {
@@ -26,10 +29,10 @@ namespace Factories
             }
         }
 
-        public GameObject SpawnEnemy(EnemyType enemyType)
+        public Enemy SpawnEnemy(EnemyType enemyType)
         {
-            var enemy = Instantiate(prefabs[enemyType], _enemiesParents[enemyType]);
-            return enemy;
+            var enemy = _container.InstantiatePrefab(prefabs[enemyType], _enemiesParents[enemyType]);
+            return enemy.GetComponent<Enemy>();
         }
     }
 }
