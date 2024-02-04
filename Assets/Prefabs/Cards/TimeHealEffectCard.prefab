@@ -22,6 +22,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 1449490074397356168, guid: edc2bf3383006df49869c8a5758f451f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fffd640a37cd1e4381db31bfdba8d42,
+        type: 3}
     - target: {fileID: 2624751398092753985, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_Pivot.x
