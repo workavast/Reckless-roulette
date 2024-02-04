@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SelectableSystem
 {
-    public class SelectionField : MonoBehaviour, ShowableUI
+    public class SelectionField : MonoBehaviour, IShowableUI
     {
         public void Init(bool isSelected) => gameObject.SetActive(isSelected);
 

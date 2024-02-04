@@ -4,6 +4,8 @@ namespace EffectsSystem
 {
     public class PowerUpEffect : EffectBase
     {
+        public override EffectType EffectType => EffectType.PowerUp;
+
         private readonly float _additionalDamage;
         
         public PowerUpEffect(PowerUpCardConfig powerUpCardConfig) : base(powerUpCardConfig)

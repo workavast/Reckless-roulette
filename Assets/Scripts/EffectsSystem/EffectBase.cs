@@ -8,6 +8,8 @@ namespace EffectsSystem
 {
     public abstract class EffectBase
     {
+        public abstract EffectType EffectType { get; }
+        
         protected readonly Timer ApplyCooldown;
         protected readonly SomeStorageInt ApplyCounter;
         protected EntityBase Entity;

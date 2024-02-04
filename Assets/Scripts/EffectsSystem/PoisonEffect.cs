@@ -4,6 +4,7 @@ namespace EffectsSystem
 {
     public class PoisonEffect : EffectBase
     {
+        public override EffectType EffectType => EffectType.Poison;
         private readonly float _damage;
 
         public PoisonEffect(PoisonCardConfig poisonCardConfig) : base(poisonCardConfig)
