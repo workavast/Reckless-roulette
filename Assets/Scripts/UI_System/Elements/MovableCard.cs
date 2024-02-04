@@ -1,6 +1,6 @@
 using System;
 using Cards;
-using DragAndDrop;
+using Cards.CardsLogics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,10 +10,10 @@ namespace UI_System.CardUi
     [RequireComponent(typeof(RectTransform))]
     public class MovableCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private Image FillImage;
-        [SerializeField] private Image dragImage;
+        [SerializeField] private float cardMoveSpeed;
+        [SerializeField] private Image dragTargetImage;
 
+        private CardLogicBase _cardLogicBase;
         private bool _isDrag;
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
@@ -22,7 +22,6 @@ namespace UI_System.CardUi
         private Vector3 _currentCardLinePosition;
         private RectTransform _rectTransform;
         private Transform _destinationTarget;
-        private CardProcessorBase _card;
         private bool _isMove;
 
         private event Action<float> OnUpdate;
@@ -32,6 +31,7 @@ namespace UI_System.CardUi
         
         private void Awake()
         {
+            _cardLogicBase = GetComponent<CardLogicBase>();
             _rectTransform = GetComponent<RectTransform>();
             _currentCardLinePosition = _rectTransform.position;
         }
@@ -42,12 +42,6 @@ namespace UI_System.CardUi
         public void SetStartPosition(Transform startTransform)
         {
             _currentCardLinePosition = startTransform.position;
-        }
-        
-        public void SetCardData(CardProcessorBase card, Sprite sprite)
-        {
-            _card = card;
-            FillImage.sprite = sprite;
         }
         
         public void SetDestination(int holderIndex, Transform cardHolder)
@@ -64,7 +58,7 @@ namespace UI_System.CardUi
         
         private void Move(float time)
         {
-            _currentCardLinePosition += Vector3.left * (moveSpeed * time);
+            _currentCardLinePosition += Vector3.left * (cardMoveSpeed * time);
             
             if (_currentCardLinePosition.x <= _destinationTarget.position.x)
             {
@@ -93,7 +87,7 @@ namespace UI_System.CardUi
             if(!Interactable) return;
 
             _isDrag = true;
-            dragImage.raycastTarget = false;
+            dragTargetImage.raycastTarget = false;
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -103,14 +97,14 @@ namespace UI_System.CardUi
             if (target is null)
             {
                 var cardTarget = CastRaycast();
-                if (_card.TryUseCard(cardTarget))
+                if (_cardLogicBase.TryUse(cardTarget))
                     OnUse?.Invoke(HolderIndex);
             }
 
             _rectTransform.position = _currentCardLinePosition;
             
             _isDrag = false;
-            dragImage.raycastTarget = true;
+            dragTargetImage.raycastTarget = true;
         }
 
         public void OnDrag(PointerEventData eventData)

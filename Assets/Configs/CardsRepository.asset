@@ -9,16 +9,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 381f8ae4dabe4a089c670a3ccc74cfa8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f769122df29485ca57a92aa6bf506d7, type: 3}
   m_Name: CardsRepository
   m_EditorClassIdentifier: 
   cards:
     dictionaryCells:
     - key: 0
-      value: {fileID: 11400000, guid: 8637501419aaade47a38975ea898cd1b, type: 2}
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: c25ff8ebcc46dc84d8460cd302c5c5c8,
+          type: 3}
+        <Chance>k__BackingField: 0
     - key: 10
-      value: {fileID: 11400000, guid: de8ab2e032c32e44e87af72184ee5249, type: 2}
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 43c94c0095e643a4494882efdf0af86a,
+          type: 3}
+        <Chance>k__BackingField: 0
     - key: 20
-      value: {fileID: 11400000, guid: ba54dab6db9757e4f9df55829190596d, type: 2}
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: acec46985ac10fd48a62f8000b5f466b,
+          type: 3}
+        <Chance>k__BackingField: 0
     - key: 30
-      value: {fileID: 11400000, guid: b6ee68555d6a4144e9a688a2e1e8326d, type: 2}
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 911eed6a021460045a53ce0c597c3f7e,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 40
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: cd4facf9578063b4e8484de5293dcbba,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 50
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: e8c9e7a9c80e3394d856b92c43b91d3d,
+          type: 3}
+        <Chance>k__BackingField: 0

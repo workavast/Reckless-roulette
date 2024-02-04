@@ -1,6 +1,6 @@
 using System.Linq;
-using Cards.Configs;
 using EnumValuesExtension;
+using UI_System.Elements;
 using UnityEngine;
 
 namespace Cards
@@ -20,13 +20,13 @@ namespace Cards
             _cardLine = cardLine;
         }
         
-        public void CreateCard(CardType cardType) => _cardLine.SpawnNewCard(_cardsRepository.TakeCard(cardType));
+        public void CreateCard(CardType cardType) => _cardLine.SpawnNewCard(cardType);
         
         public void CreateRandomCard()
         {
             int index = Random.Range(0, _cardsRepository.CardsCount);
             
-            _cardLine.SpawnNewCard(_cardsRepository.TakeCard(_cardTypes[index]));
+            _cardLine.SpawnNewCard(_cardTypes[index]);
         }
     }
 }

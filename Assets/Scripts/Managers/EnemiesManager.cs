@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Enemies;
+using Entities.Enemies;
 using Factories;
 using GameCycle;
 using UnityEngine;
@@ -23,21 +24,24 @@ namespace Managers
             _gameCycleController.AddListener(GameCycleState.Gameplay, this);
         }
 
+        private readonly List<Enemy> _removeList = new();
         public void GameCycleUpdate()
         {
             foreach (var enemy in _activeEnemies)
-                enemy.HandelUpdate(Time.deltaTime);
+                enemy.HandleUpdate(Time.deltaTime);
+
+            DestroyRemoveEnemies();
         }
         
         public void SpawnEnemy(EnemyType enemyType)
         {
-            var enemy = _enemiesFactory.SpawnEnemy(enemyType);
+            var enemy = _enemiesFactory.Create(enemyType);
             enemy.SetFightPoint(fightPoint);
-
+            
             float lastEnemyPos = 0;
             if(_activeEnemies.Count > 0)
                 lastEnemyPos = _activeEnemies[^1].transform.position.x;
-
+            
             float offset;
             if (lastEnemyPos + step <= spawnPoint.transform.position.x)
                 offset = 0;
@@ -48,10 +52,21 @@ namespace Managers
             enemy.OnDie += RemoveEnemy;
             _activeEnemies.Add(enemy);
         }
-
+        
         private void RemoveEnemy(Enemy enemy)
         {
-            _activeEnemies.Remove(enemy);
+            _removeList.Add(enemy);
+        }
+
+        private void DestroyRemoveEnemies()
+        {
+            foreach (var enemy in _removeList)
+            {
+                _activeEnemies.Remove(enemy);
+                Destroy(enemy.gameObject);
+            }
+            
+            _removeList.Clear();
         }
 
         private void OnDestroy()

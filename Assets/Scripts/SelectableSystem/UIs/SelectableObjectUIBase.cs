@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SelectableSystem
 {
     public abstract class SelectableObjectUIBase<TSelectable> : MonoBehaviour
-        where TSelectable : IHaveUI
+        where TSelectable : ISelectable
     {
         [SerializeField] protected TSelectable selectable;
         [SerializeField] private GameObject canvas;

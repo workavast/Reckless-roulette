@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d387c995d0848c9b314f5e8aff579e7, type: 3}
   m_Name: HealCardConfig
   m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000,
-    type: 0}
+  <Heal>k__BackingField: 10

@@ -53,6 +53,7 @@ MonoBehaviour:
     minValue: 0
   attackDamage: 2
   attackSpeed: 15
+  <PoolId>k__BackingField: 20
 --- !u!61 &-7974533497120793960
 BoxCollider2D:
   m_ObjectHideFlags: 0

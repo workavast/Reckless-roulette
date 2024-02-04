@@ -1,118 +1,120 @@
 using System;
 using System.Collections.Generic;
 using Cards;
-using Cards.Configs;
+using Factories;
 using GameCycle;
 using UI_System.CardUi;
 using UnityEngine;
 using Zenject;
 
-public class CardLine : MonoBehaviour, IGameCycleUpdate, IGameCycleEnter, IGameCycleExit
+namespace UI_System.Elements
 {
-    [SerializeField] private CardHolder[] cardHolders;
-    [SerializeField] private Transform cardSpawnPos;
-    [SerializeField] private Transform cardParent;
-    [SerializeField] private GameObject cardPrefab;
-
-    [Inject] private DiContainer _container;
-    [Inject] private IGameCycleController _gameCycleController;
-    
-    private readonly List<MovableCard> _movableCards = new();
-
-    public event Action OnFillLine;
-
-    private void Awake()
+    public class CardLine : MonoBehaviour, IGameCycleUpdate, IGameCycleEnter, IGameCycleExit
     {
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
-    }
+        [SerializeField] private CardHolder[] cardHolders;
+        [SerializeField] private Transform cardSpawnPos;
+        [SerializeField] private Transform cardParent;
+        [SerializeField] private GameObject cardPrefab;
 
-    public void GameCycleEnter()
-    {
-        foreach (var movableCard in _movableCards)
-            movableCard.SwitchInteractionState(true);
-    }
+        [Inject] private CardFactory _cardFactory;
+        [Inject] private DiContainer _container;
+        [Inject] private IGameCycleController _gameCycleController;
     
-    public void GameCycleExit()
-    {
-        foreach (var movableCard in _movableCards)
-            movableCard.SwitchInteractionState(false);
-    }
-    
-    public void GameCycleUpdate()
-    {
-        foreach (var movableCard in _movableCards)
-            movableCard.HandleUpdate(Time.deltaTime);
-    }
-    
-    public void SpawnNewCard(CardConfigBase cardConfig)
-    {           
-        var cardProcessor = (CardProcessorBase)Activator.CreateInstance(cardConfig.CardProcessorBase.GetType());
-        _container.Inject(cardProcessor);
-        
-        var movableCard = Instantiate(cardPrefab, cardParent).GetComponent<MovableCard>();
-        //need cus without this card spawned in the center of screen for one frame
-        movableCard.transform.position = cardSpawnPos.position;
-        movableCard.SetStartPosition(cardSpawnPos);
-        movableCard.SetCardData(cardProcessor, cardConfig.Sprite);
-        movableCard.OnUse += RemoveCard;
-        _movableCards.Add(movableCard);
-        movableCard.OnReachDestination += CheckFillLine;
+        private readonly List<MovableCard> _movableCards = new();
 
-        for (int i = 0; i < cardHolders.Length; i++)
+        public event Action OnFillLine;
+
+        private void Awake()
         {
-            if (!cardHolders[i].HaveMovableCard)
-            {
-                cardHolders[i].SetCard();
-                movableCard.SetDestination(i, cardHolders[i].transform);
-                return;
-            }
+            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
+            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
+            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
         }
-        
-        OnFillLine?.Invoke();
-    }
+
+        public void GameCycleEnter()
+        {
+            foreach (var movableCard in _movableCards)
+                movableCard.SwitchInteractionState(true);
+        }
     
-    private void CheckFillLine()
-    {
-        if(_movableCards.Count < cardHolders.Length) return;
-        
-        bool allLineOccupied = true;
-        foreach (var movableCard in _movableCards)
-            if (!movableCard.IsReachDestination) allLineOccupied = false;
+        public void GameCycleExit()
+        {
+            foreach (var movableCard in _movableCards)
+                movableCard.SwitchInteractionState(false);
+        }
     
-        if (allLineOccupied)
+        public void GameCycleUpdate()
+        {
+            foreach (var movableCard in _movableCards)
+                movableCard.HandleUpdate(Time.deltaTime);
+        }
+    
+        public void SpawnNewCard(CardType cardType)
+        {           
+            var movableCard = _cardFactory.Create(cardType);
+            _container.Inject(movableCard);
+            //need cus without this card spawned in the center of screen for one frame
+            movableCard.transform.position = cardSpawnPos.position;
+            movableCard.transform.SetParent(transform);
+            movableCard.SetStartPosition(cardSpawnPos);
+            movableCard.OnUse += RemoveCard;
+            _movableCards.Add(movableCard);
+            movableCard.OnReachDestination += CheckFillLine;
+        
+            for (int i = 0; i < cardHolders.Length; i++)
+            {
+                if (!cardHolders[i].HaveMovableCard)
+                {
+                    cardHolders[i].SetCard();
+                    movableCard.SetDestination(i, cardHolders[i].transform);
+                    return;
+                }
+            }
+        
             OnFillLine?.Invoke();
-    }
-
-    private void RemoveCard(int holderIndex)
-    {
-        var movableCard = _movableCards[holderIndex];
-        _movableCards.RemoveAt(holderIndex);
-        cardHolders[holderIndex].ResetCard();
-        Destroy(movableCard.gameObject);
-
-        UpdateCardsDestinations(holderIndex);
-    }
-
-    private void UpdateCardsDestinations(int holderIndex)
-    {
-        foreach (var movableCard in _movableCards)
+        }
+    
+        private void CheckFillLine()
         {
-            if (movableCard.HolderIndex > holderIndex)
+            if(_movableCards.Count < cardHolders.Length) return;
+        
+            bool allLineOccupied = true;
+            foreach (var movableCard in _movableCards)
+                if (!movableCard.IsReachDestination) allLineOccupied = false;
+    
+            if (allLineOccupied)
+                OnFillLine?.Invoke();
+        }
+
+        private void RemoveCard(int holderIndex)
+        {
+            var movableCard = _movableCards[holderIndex];
+            _movableCards.RemoveAt(holderIndex);
+            cardHolders[holderIndex].ResetCard();
+            Destroy(movableCard.gameObject);
+
+            UpdateCardsDestinations(holderIndex);
+        }
+
+        private void UpdateCardsDestinations(int holderIndex)
+        {
+            foreach (var movableCard in _movableCards)
             {
-                cardHolders[movableCard.HolderIndex].ResetCard();
-                var index = movableCard.HolderIndex - 1;
-                cardHolders[index].SetCard();
-                _movableCards[index].SetDestination(index, cardHolders[index].transform);
+                if (movableCard.HolderIndex > holderIndex)
+                {
+                    cardHolders[movableCard.HolderIndex].ResetCard();
+                    var index = movableCard.HolderIndex - 1;
+                    cardHolders[index].SetCard();
+                    _movableCards[index].SetDestination(index, cardHolders[index].transform);
+                }
             }
         }
-    }
 
-    private void OnDestroy()
-    {
-        _gameCycleController.RemoveListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
+        private void OnDestroy()
+        {
+            _gameCycleController.RemoveListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
+            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
+            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
+        }
     }
 }
