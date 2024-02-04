@@ -9,7 +9,8 @@ using Zenject;
 
 public class GameplayController : MonoBehaviour
 { 
-    [Inject] private CardsRepository _cardsRepository;
+    [SerializeField] private LocationCardsConfig locationCardsConfig;
+    
     [Inject] private UI_Controller _uiController;
     [Inject] private CardLine _cardLine;
     [Inject] private PlayerHero _playerHero;
@@ -18,14 +19,14 @@ public class GameplayController : MonoBehaviour
         
     private CardCreatorProcessor _cardCreatorProcessor;
 
-    private Timer _timer;
+    private Timer _spawnTimer;
 
     private void Awake()
     {
-        _timer = new Timer(2);
-        _timer.OnTimerEnd += SpawnRandomEnemy;
+        _spawnTimer = new Timer(2);
+        _spawnTimer.OnTimerEnd += SpawnRandomEnemy;
         
-        _cardCreatorProcessor = new CardCreatorProcessor(_cardsRepository, _cardLine);
+        _cardCreatorProcessor = new CardCreatorProcessor(locationCardsConfig, _cardLine);
 
         _playerHero.OnDie += LooseGame;
         _cardLine.OnFillLine += LooseGame;
@@ -34,25 +35,25 @@ public class GameplayController : MonoBehaviour
 
     private void Update()
     {
-        _timer.Tick(Time.deltaTime);
+        _spawnTimer.Tick(Time.deltaTime);
     }
 
     private void SpawnRandomEnemy()
     {
-        _timer.Reset();
+        _spawnTimer.Reset();
         _cardCreatorProcessor.CreateRandomCard();
     }
 
     private void LooseGame()
     {
-        _timer.SetPause();
+        _spawnTimer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
         _uiController.SetScreen(ScreenType.GameplayLoose);
     }
 
     private void CompleteGame()
     {
-        _timer.SetPause();
+        _spawnTimer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
         _uiController.SetScreen(ScreenType.GameplayWin);
     }

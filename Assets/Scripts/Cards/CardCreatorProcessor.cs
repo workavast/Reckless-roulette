@@ -1,5 +1,4 @@
 using System.Linq;
-using EnumValuesExtension;
 using UI_System.Elements;
 using UnityEngine;
 
@@ -7,16 +6,12 @@ namespace Cards
 {
     public class CardCreatorProcessor
     {
-        private readonly CardsRepository _cardsRepository;
         private readonly CardLine _cardLine;
-
-        private readonly CardType[] _cardTypes;
+        private readonly CardChanceRange[] _cardChances;
         
-        public CardCreatorProcessor(CardsRepository cardsRepository, CardLine cardLine)
+        public CardCreatorProcessor(LocationCardsConfig locationCardsConfig, CardLine cardLine)
         {
-            _cardTypes = EnumValuesTool.GetValues<CardType>().ToArray();
-            
-            _cardsRepository = cardsRepository;
+            _cardChances = locationCardsConfig.TakeCardChances().ToArray();
             _cardLine = cardLine;
         }
         
@@ -24,9 +19,21 @@ namespace Cards
         
         public void CreateRandomCard()
         {
-            int index = Random.Range(0, _cardsRepository.CardsCount);
+            int chance = Random.Range(0, _cardChances[^1].UpCase);
+
+            foreach (var cardChance in _cardChances)
+            {
+                if (cardChance.Check(chance))
+                {
+                    _cardLine.SpawnNewCard(cardChance.CardType);
+                    return;
+                }
+            }
+        }
+
+        public void CreateBoss()
+        {
             
-            _cardLine.SpawnNewCard(_cardTypes[index]);
         }
     }
 }
