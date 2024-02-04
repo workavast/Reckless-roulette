@@ -16,17 +16,17 @@ MonoBehaviour:
     dictionaryCells:
     - key: 0
       value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: c25ff8ebcc46dc84d8460cd302c5c5c8,
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 63d081633c18af44898626949a2d9b70,
           type: 3}
         <Chance>k__BackingField: 0
     - key: 10
       value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 43c94c0095e643a4494882efdf0af86a,
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: e01e9bde348807c4c80c8178086f512f,
           type: 3}
         <Chance>k__BackingField: 0
     - key: 20
       value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: acec46985ac10fd48a62f8000b5f466b,
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: ead2f308c8b15aa4b82b888da616ef8b,
           type: 3}
         <Chance>k__BackingField: 0
     - key: 30
@@ -42,5 +42,30 @@ MonoBehaviour:
     - key: 50
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: e8c9e7a9c80e3394d856b92c43b91d3d,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 60
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 558156b14aea30847b35036b77180c59,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 70
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 541239e9f1353994ab84a5f75cdc68c9,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 80
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: be94174b3b2e7a6488587a65ad2b1609,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 90
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05a796f5273462a498370f874fcc2729,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 100
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
           type: 3}
         <Chance>k__BackingField: 0

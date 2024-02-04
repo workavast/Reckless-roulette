@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Cards.Configs
 {
-    [CreateAssetMenu(fileName = "GreenSlimeCardConfig", menuName = "Configs/Cards/GreenSlimeCardConfig")]
+    [CreateAssetMenu(fileName = nameof(GreenSlimeCardConfig), menuName = "Configs/Cards/" + nameof(GreenSlimeCardConfig))]
     public class GreenSlimeCardConfig : CardConfigBase
     {
     }

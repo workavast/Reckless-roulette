@@ -14,7 +14,6 @@ namespace UI_System.Elements
         [SerializeField] private CardHolder[] cardHolders;
         [SerializeField] private Transform cardSpawnPos;
         [SerializeField] private Transform cardParent;
-        [SerializeField] private GameObject cardPrefab;
 
         [Inject] private CardFactory _cardFactory;
         [Inject] private DiContainer _container;
@@ -55,7 +54,7 @@ namespace UI_System.Elements
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
             movableCard.transform.position = cardSpawnPos.position;
-            movableCard.transform.SetParent(transform);
+            movableCard.transform.SetParent(cardParent);
             movableCard.SetStartPosition(cardSpawnPos);
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);

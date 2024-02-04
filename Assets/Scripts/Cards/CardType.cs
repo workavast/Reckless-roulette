@@ -7,6 +7,11 @@ namespace Cards
         RedSlimeSpawner = 20,
         HealCard = 30,
         PoisonCard = 40,
-        TimeHealCard = 50
+        TimeHealCard = 50,
+        GolemOrange = 60,
+        GolemBlue = 70,
+        GolemPurple = 80,
+        Eye = 90,
+        EyeAngry = 100,
     }
 }

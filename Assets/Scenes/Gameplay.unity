@@ -130,6 +130,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 40190566010361506, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40190566010361506, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40190566010361506, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40190566010361506, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 723358534019455920, guid: 4433376230c074c4bb3ebe9f55802cb5,
         type: 3}
       propertyPath: m_Name
@@ -567,6 +587,21 @@ MonoBehaviour:
     - key: 10
       value: {fileID: 7736247475753249420, guid: 0cb5d1162ba290f4da89e367421b8ae0,
         type: 3}
+    - key: 30
+      value: {fileID: 7736247475753249420, guid: 3b71700ad8c5229449585b17119c88bf,
+        type: 3}
+    - key: 40
+      value: {fileID: 7736247475753249420, guid: c8b6e69a3b1a9ac42804f29de184a5f1,
+        type: 3}
+    - key: 50
+      value: {fileID: 7736247475753249420, guid: 4286d1208b4eb7248a338e0ecfeaf58f,
+        type: 3}
+    - key: 60
+      value: {fileID: 7736247475753249420, guid: c0a27c9c792a72446b43b3ac44b0f488,
+        type: 3}
+    - key: 70
+      value: {fileID: 7736247475753249420, guid: 7a26e7033da277a488430bcf6f7c1cb2,
+        type: 3}
 --- !u!1 &442488694
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,13 +1007,13 @@ MonoBehaviour:
   prefabs:
     dictionaryCells:
     - key: 0
-      value: {fileID: 1483409676892297515, guid: c25ff8ebcc46dc84d8460cd302c5c5c8,
+      value: {fileID: 6170428151825106795, guid: 63d081633c18af44898626949a2d9b70,
         type: 3}
     - key: 10
-      value: {fileID: 1483409676892297515, guid: 43c94c0095e643a4494882efdf0af86a,
+      value: {fileID: 6170428151825106795, guid: e01e9bde348807c4c80c8178086f512f,
         type: 3}
     - key: 20
-      value: {fileID: 1483409676892297515, guid: acec46985ac10fd48a62f8000b5f466b,
+      value: {fileID: 6170428151825106795, guid: ead2f308c8b15aa4b82b888da616ef8b,
         type: 3}
     - key: 30
       value: {fileID: 1483409676892297515, guid: 911eed6a021460045a53ce0c597c3f7e,
@@ -988,6 +1023,21 @@ MonoBehaviour:
         type: 3}
     - key: 50
       value: {fileID: 1483409676892297515, guid: e8c9e7a9c80e3394d856b92c43b91d3d,
+        type: 3}
+    - key: 60
+      value: {fileID: 6170428151825106795, guid: 558156b14aea30847b35036b77180c59,
+        type: 3}
+    - key: 70
+      value: {fileID: 6170428151825106795, guid: 541239e9f1353994ab84a5f75cdc68c9,
+        type: 3}
+    - key: 80
+      value: {fileID: 6170428151825106795, guid: be94174b3b2e7a6488587a65ad2b1609,
+        type: 3}
+    - key: 90
+      value: {fileID: 6170428151825106795, guid: 05a796f5273462a498370f874fcc2729,
+        type: 3}
+    - key: 100
+      value: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
         type: 3}
 --- !u!1 &890040137
 GameObject:
