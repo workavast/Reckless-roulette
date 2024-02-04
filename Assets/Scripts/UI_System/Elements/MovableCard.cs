@@ -64,21 +64,6 @@ namespace UI_System.CardUi
         
         private void Move(float time)
         {
-            // _rectTransform.Translate(Vector3.left * (moveSpeed * time));
-            //
-            // if (_rectTransform.position.x <= _destinationTarget.position.x)
-            // {
-            //     var pos = _rectTransform.position;
-            //     pos.x = _destinationTarget.position.x;
-            //     
-            //     _rectTransform.position = pos;
-            //     OnUpdate -= Move;
-            //     _isMove = false;
-            //     IsReachDestination = true;
-            //     
-            //     OnReachDestination?.Invoke();
-            // }
-            
             _currentCardLinePosition += Vector3.left * (moveSpeed * time);
             
             if (_currentCardLinePosition.x <= _destinationTarget.position.x)
@@ -114,14 +99,13 @@ namespace UI_System.CardUi
         public void OnEndDrag(PointerEventData eventData)
         {
             GameObject target = eventData.pointerCurrentRaycast.gameObject;
-            ICardTarget cardTarget = null;
-            if (target != null)
-                cardTarget = target.GetComponent<ICardTarget>();
-            else
-                cardTarget = CastRaycast();
-
-            if (_card.TryUseCard(cardTarget))
-                OnUse?.Invoke(HolderIndex);
+            
+            if (target is null)
+            {
+                var cardTarget = CastRaycast();
+                if (_card.TryUseCard(cardTarget))
+                    OnUse?.Invoke(HolderIndex);
+            }
 
             _rectTransform.position = _currentCardLinePosition;
             
@@ -138,7 +122,6 @@ namespace UI_System.CardUi
         {
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            // var castRes = Physics2D.Raycast(point, Vector3.forward, 100);
             var castRes = Physics2D.Raycast(point, Vector2.zero);
 
             ICardTarget res = null;
