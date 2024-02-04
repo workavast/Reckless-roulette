@@ -516,6 +516,7 @@ Transform:
   m_Children:
   - {fileID: 436365093}
   - {fileID: 859569432}
+  - {fileID: 527566608}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -667,6 +668,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &527566607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 527566608}
+  - component: {fileID: 527566609}
+  m_Layer: 0
+  m_Name: BossFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &527566608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527566607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 55397099}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527566609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527566607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b14dfea6d74bebb9e9d95777c66a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+    dictionaryCells:
+    - key: 0
+      value: {fileID: 909713576674706871, guid: 544415b9ceee3384c9a545d3f89df85b,
+        type: 3}
 --- !u!1 &691134190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1113,9 @@ MonoBehaviour:
     - key: 110
       value: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
         type: 3}
+    - key: 120
+      value: {fileID: 277494029118320272, guid: f52b768788ba9a0479925544640cb49f,
+        type: 3}
 --- !u!1 &890040137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationCardsConfig: {fileID: 11400000, guid: b66bbed7427e0d34694f5c19ac7e9e63,
     type: 2}
+  bossCard: 120
 --- !u!4 &1047600223
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1304,7 @@ MonoBehaviour:
   factories:
   - {fileID: 436365094}
   - {fileID: 859569433}
+  - {fileID: 527566609}
 --- !u!1 &1310850848
 GameObject:
   m_ObjectHideFlags: 0

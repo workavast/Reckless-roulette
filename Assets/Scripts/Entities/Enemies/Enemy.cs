@@ -1,7 +1,6 @@
 using System;
 using Cards;
 using CustomTimer;
-using Enemies;
 using EventBusExtension;
 using Events;
 using UnityEngine;
@@ -12,10 +11,8 @@ namespace Entities.Enemies
     [RequireComponent(typeof(Collider2D))]
     public class Enemy : EntityBase, IEventReceiver<PlayerHeroMove>, ICardTarget
     {
-        [field: SerializeField] public EnemyType PoolId { get; private set; }
-
-        [Inject] private PlayerHero _playerHero;
-        [Inject] private EventBus _eventBus;
+        [Inject] protected PlayerHero PlayerHero;
+        [Inject] protected EventBus EventBus;
 
         public ReceiverIdentifier ReceiverIdentifier { get; } = new();
         public bool StayInFightPoint { get; private set; }
@@ -23,12 +20,13 @@ namespace Entities.Enemies
         private Transform _fightPoint;
         private Timer _attackCooldown;
 
-        public bool isDead;
+        private bool _isDead;
+        private bool _disposed;
         public event Action<Enemy> OnDie;
 
         protected override void OnAwake()
         {
-            _eventBus.Subscribe(this);
+            EventBus.Subscribe(this);
 
             _attackCooldown = new Timer(60 / attackSpeed);
                 
@@ -42,13 +40,13 @@ namespace Entities.Enemies
         
         public override void TakeDamage(float damage)
         {
-            if(isDead) return;
+            if(_isDead) return;
             
             healthPoints.ChangeCurrentValue(-damage);
 
             if (healthPoints.IsEmpty)
             {
-                isDead = true;
+                _isDead = true;
                 OnDie?.Invoke(this);
                 Dispose();
             }
@@ -70,19 +68,26 @@ namespace Entities.Enemies
                 _attackCooldown.OnTimerEnd += Attack;
                 if(_attackCooldown.TimerIsEnd) Attack();
                 
-                _eventBus.Invoke(new EnemyReachFightPoint(this));
+                EventBus.Invoke(new EnemyReachFightPoint(this));
             }
         }
 
         private void Attack()
         {
             _attackCooldown.Reset();
-            _playerHero.TakeDamage(attackDamage);
+            PlayerHero.TakeDamage(attackDamage);
+        }
+
+        private void OnDestroy()
+        {
+            Dispose();
         }
 
         private void Dispose()
         {
-            _eventBus.UnSubscribe(this);
+            if(_disposed) return;
+            _disposed = true;
+            EventBus.UnSubscribe(this);
         }
     }
 }

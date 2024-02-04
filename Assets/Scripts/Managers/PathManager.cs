@@ -13,6 +13,8 @@ namespace Managers
 
         private SomeStorageFloat _lenght;
         public IReadOnlySomeStorage<float> Lenght => _lenght;
+
+        private bool _isArrivedDestination;
         
         public event Action OnPositionChange;
         public event Action OnArriveDestination;
@@ -31,11 +33,16 @@ namespace Managers
         
         private void UpdatePath(float distance)
         {
+            if(_isArrivedDestination) return;
+
             _lenght.ChangeCurrentValue(distance);
             OnPositionChange?.Invoke();
-            
-            if(_lenght.IsFull)
+
+            if (_lenght.IsFull)
+            {
+                _isArrivedDestination = true;
                 OnArriveDestination?.Invoke();
+            }
         }
     }
 }

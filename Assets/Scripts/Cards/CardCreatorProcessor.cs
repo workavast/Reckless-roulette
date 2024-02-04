@@ -6,11 +6,13 @@ namespace Cards
 {
     public class CardCreatorProcessor
     {
+        private readonly CardType _bossCard;
         private readonly CardLine _cardLine;
         private readonly CardChanceRange[] _cardChances;
         
-        public CardCreatorProcessor(LocationCardsConfig locationCardsConfig, CardLine cardLine)
+        public CardCreatorProcessor(CardType bossCard, LocationCardsConfig locationCardsConfig, CardLine cardLine)
         {
+            _bossCard = bossCard;
             _cardChances = locationCardsConfig.TakeCardChances().ToArray();
             _cardLine = cardLine;
         }
@@ -31,9 +33,9 @@ namespace Cards
             }
         }
 
-        public void CreateBoss()
+        public void CreateBossCard()
         {
-            
+            _cardLine.SpawnNewCard(_bossCard);
         }
     }
 }

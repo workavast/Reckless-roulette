@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cards.CardsLogics.BossCards;
 using Enemies;
 using Entities.Enemies;
 using Factories;
@@ -13,7 +14,8 @@ namespace Managers
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Transform fightPoint;
         [SerializeField] private float step;
-        
+
+        [Inject] private BossFactory _bossFactory;
         [Inject] private EnemiesFactory _enemiesFactory;
         [Inject] private IGameCycleController _gameCycleController;
         
@@ -31,6 +33,21 @@ namespace Managers
                 enemy.HandleUpdate(Time.deltaTime);
 
             DestroyRemoveEnemies();
+        }
+        
+        public void SpawnBoss(BossType bossType)
+        {
+            foreach (var enemy in _activeEnemies)
+                if(enemy.transform.position.x >= spawnPoint.position.x)
+                    RemoveEnemy(enemy);
+            
+            DestroyRemoveEnemies();
+
+            var boss = _bossFactory.Create(bossType);
+            boss.SetFightPoint(fightPoint);
+            boss.transform.position = spawnPoint.position;
+            boss.OnDie += RemoveEnemy;
+            _activeEnemies.Add(boss);
         }
         
         public void SpawnEnemy(EnemyType enemyType)

@@ -1,5 +1,7 @@
 using Cards;
 using CustomTimer;
+using EventBusExtension;
+using Events;
 using GameCycle;
 using Managers;
 using UI_System;
@@ -7,10 +9,12 @@ using UI_System.Elements;
 using UnityEngine;
 using Zenject;
 
-public class GameplayController : MonoBehaviour
+public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
 { 
     [SerializeField] private LocationCardsConfig locationCardsConfig;
-    
+    [SerializeField] private CardType bossCard;
+
+    [Inject] private EventBus _eventBus;
     [Inject] private UI_Controller _uiController;
     [Inject] private CardLine _cardLine;
     [Inject] private PlayerHero _playerHero;
@@ -18,19 +22,22 @@ public class GameplayController : MonoBehaviour
     [Inject] private GameCycleController _gameCycleController;
         
     private CardCreatorProcessor _cardCreatorProcessor;
-
     private Timer _spawnTimer;
+    
+    public ReceiverIdentifier ReceiverIdentifier { get; } = new();
 
     private void Awake()
     {
-        _spawnTimer = new Timer(2);
-        _spawnTimer.OnTimerEnd += SpawnRandomEnemy;
+        _eventBus.Subscribe(this);
         
-        _cardCreatorProcessor = new CardCreatorProcessor(locationCardsConfig, _cardLine);
+        _spawnTimer = new Timer(2);
+        _spawnTimer.OnTimerEnd += CreateCard;
+        
+        _cardCreatorProcessor = new CardCreatorProcessor(bossCard, locationCardsConfig, _cardLine);
 
         _playerHero.OnDie += LooseGame;
         _cardLine.OnFillLine += LooseGame;
-        _pathManager.OnArriveDestination += CompleteGame;
+        _pathManager.OnArriveDestination += ArriveDestination;
     }
 
     private void Update()
@@ -38,12 +45,20 @@ public class GameplayController : MonoBehaviour
         _spawnTimer.Tick(Time.deltaTime);
     }
 
-    private void SpawnRandomEnemy()
+    public void OnEvent(BossDie t) => CompleteGame();
+    
+    private void CreateCard()
     {
         _spawnTimer.Reset();
         _cardCreatorProcessor.CreateRandomCard();
     }
 
+    private void ArriveDestination()
+    {
+        _spawnTimer.SetPause();
+        _cardCreatorProcessor.CreateBossCard();
+    }
+    
     private void LooseGame()
     {
         _spawnTimer.SetPause();
@@ -56,5 +71,10 @@ public class GameplayController : MonoBehaviour
         _spawnTimer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
         _uiController.SetScreen(ScreenType.GameplayWin);
+    }
+
+    private void OnDestroy()
+    {
+        _eventBus.UnSubscribe(this);
     }
 }

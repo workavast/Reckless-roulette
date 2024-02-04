@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f769122df29485ca57a92aa6bf506d7, type: 3}
   m_Name: Location1CardsConfig
   m_EditorClassIdentifier: 
+  <BossCard>k__BackingField: 0
   cards:
     dictionaryCells:
     - key: 0

@@ -9,6 +9,7 @@ namespace Enemies
         GolemBlue = 40,
         GolemPurple = 50,
         Eye = 60,
-        EyeAngry = 70
+        EyeAngry = 70,
+        BossBigSlime = 80
     }
 }

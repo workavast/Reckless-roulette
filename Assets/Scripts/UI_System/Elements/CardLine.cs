@@ -72,7 +72,7 @@ namespace UI_System.Elements
         
             OnFillLine?.Invoke();
         }
-    
+        
         private void CheckFillLine()
         {
             if(_movableCards.Count < cardHolders.Length) return;

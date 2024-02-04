@@ -7,6 +7,7 @@ namespace Cards
     [CreateAssetMenu(fileName = nameof(LocationCardsConfig), menuName = "Configs/Cards/" + nameof(LocationCardsConfig))]
     public class LocationCardsConfig : ScriptableObject
     {
+        [field: SerializeField] public CardType BossCard { get; private set; }
         [SerializeField] private DictionaryInspector<CardType, CardChance> cards;
 
         public int CardsCount => cards.Count;
