@@ -330,6 +330,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4925233140061596000, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925233140061596000, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925233140061596000, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925233140061596000, guid: 4433376230c074c4bb3ebe9f55802cb5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5676846357015522764, guid: 4433376230c074c4bb3ebe9f55802cb5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -870,6 +890,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 239ac19ddbf1a3d4699890d731bf50de, type: 2}
   - {fileID: 11400000, guid: ba54dab6db9757e4f9df55829190596d, type: 2}
   - {fileID: 11400000, guid: 6003ade5dac6fbd4280bb416c3b21b1c, type: 2}
+  - {fileID: 11400000, guid: ec600ed895064fa43a9f5f202173e3bc, type: 2}
 --- !u!1 &821255503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,10 +1040,10 @@ MonoBehaviour:
       value: {fileID: 1483409676892297515, guid: 911eed6a021460045a53ce0c597c3f7e,
         type: 3}
     - key: 40
-      value: {fileID: 1483409676892297515, guid: cd4facf9578063b4e8484de5293dcbba,
+      value: {fileID: 6788851641639372681, guid: 2620de4dc8c914c4ea8d7c04fb5c7f21,
         type: 3}
     - key: 50
-      value: {fileID: 1483409676892297515, guid: e8c9e7a9c80e3394d856b92c43b91d3d,
+      value: {fileID: 6788851641639372681, guid: 85b32ce66dc47014f9b8525acda12400,
         type: 3}
     - key: 60
       value: {fileID: 6170428151825106795, guid: 558156b14aea30847b35036b77180c59,
@@ -1038,6 +1059,9 @@ MonoBehaviour:
         type: 3}
     - key: 100
       value: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
+        type: 3}
+    - key: 110
+      value: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
         type: 3}
 --- !u!1 &890040137
 GameObject:

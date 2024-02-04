@@ -1,10 +1,10 @@
-using Cards.Configs;
 using CastExtension;
+using Configs.Cards.EffectCardConfig;
 using EffectsSystem;
 using Entities;
 using Zenject;
 
-namespace Cards.CardsLogics
+namespace Cards.CardsLogics.EffectCards
 {
     public class TimeHealEffectCardLogic : CardLogicBase
     {

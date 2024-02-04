@@ -2,7 +2,7 @@ using System;
 using UI_System.CardUi;
 using UnityEngine;
 
-namespace Cards.Configs
+namespace Cards
 {
     [Serializable]
     public class CardChance

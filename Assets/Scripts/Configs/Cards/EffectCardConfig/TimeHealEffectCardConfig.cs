@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards.Configs
+namespace Configs.Cards.EffectCardConfig
 {
     [CreateAssetMenu(fileName = "TimeHealEffectCardConfig", menuName = "Configs/Cards/TimeHealEffectCardConfig")]
     public class TimeHealEffectCardConfig : EffectCardConfigBase

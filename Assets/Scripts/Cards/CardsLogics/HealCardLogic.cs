@@ -1,5 +1,5 @@
-using Cards.Configs;
 using CastExtension;
+using Configs.Cards;
 using Entities;
 using Zenject;
 

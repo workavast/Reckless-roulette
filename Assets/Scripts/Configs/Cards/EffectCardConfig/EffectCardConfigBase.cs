@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards.Configs
+namespace Configs.Cards.EffectCardConfig
 {
     public class EffectCardConfigBase : CardConfigBase
     {

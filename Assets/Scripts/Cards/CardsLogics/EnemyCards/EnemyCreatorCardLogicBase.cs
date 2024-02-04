@@ -2,7 +2,7 @@ using Enemies;
 using Managers;
 using Zenject;
 
-namespace Cards.CardsLogics
+namespace Cards.CardsLogics.EnemyCards
 {
     public abstract class EnemyCreatorCardLogicBase : CardLogicBase
     {

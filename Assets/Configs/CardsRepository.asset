@@ -36,12 +36,12 @@ MonoBehaviour:
         <Chance>k__BackingField: 0
     - key: 40
       value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: cd4facf9578063b4e8484de5293dcbba,
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 2620de4dc8c914c4ea8d7c04fb5c7f21,
           type: 3}
         <Chance>k__BackingField: 0
     - key: 50
       value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: e8c9e7a9c80e3394d856b92c43b91d3d,
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 85b32ce66dc47014f9b8525acda12400,
           type: 3}
         <Chance>k__BackingField: 0
     - key: 60
@@ -67,5 +67,10 @@ MonoBehaviour:
     - key: 100
       value:
         <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
+          type: 3}
+        <Chance>k__BackingField: 0
+    - key: 110
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
           type: 3}
         <Chance>k__BackingField: 0

@@ -1,6 +1,6 @@
 using Enemies;
 
-namespace Cards.CardsLogics
+namespace Cards.CardsLogics.EnemyCards
 {
     public class GreenSlimeCardLogic : EnemyCreatorCardLogicBase
     {

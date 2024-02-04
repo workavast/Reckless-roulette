@@ -12,11 +12,13 @@ namespace Entities
         [SerializeField] protected float attackDamage;
         [Tooltip("attack speed per minute")] 
         [SerializeField] protected float attackSpeed;
-
-        public EffectsProcessor EffectsProcessor;
         
+        public EffectsProcessor EffectsProcessor;
         public IReadOnlySomeStorage<float> HealthPoints => healthPoints;
 
+        // protected SomeStorageFloat _currentAttackDamage;
+
+        
         protected event Action<float> OnUpdate;
         
         private void Awake()
@@ -32,6 +34,11 @@ namespace Entities
         
         public abstract void TakeDamage(float damage);
 
+        public void ChangeDamage(float changeValue)
+        {
+            attackDamage += changeValue;
+        }
+        
         public void TakeHeal(float heal)
         {
             heal = Mathf.Clamp(heal, 0, float.MaxValue);

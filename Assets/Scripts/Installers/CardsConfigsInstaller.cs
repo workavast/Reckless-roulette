@@ -1,4 +1,4 @@
-using Cards.Configs;
+using Configs.Cards;
 using UnityEngine;
 using Zenject;
 

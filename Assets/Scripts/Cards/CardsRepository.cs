@@ -1,4 +1,4 @@
-using Cards.Configs;
+using Configs;
 using UI_System.CardUi;
 using UnityEngine;
 using Random = UnityEngine.Random;

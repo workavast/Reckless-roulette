@@ -1,5 +1,5 @@
 using System;
-using Cards.Configs;
+using Configs.Cards.EffectCardConfig;
 using CustomTimer;
 using Entities;
 using SomeStorages;
@@ -13,6 +13,7 @@ namespace EffectsSystem
         protected EntityBase Entity;
         
         public event Action<EffectBase> OnEffectEnd;
+        public event Action OnEntitySet;
         
         protected EffectBase(EffectCardConfigBase effectCardConfigBase)
         {
@@ -23,8 +24,12 @@ namespace EffectsSystem
             ApplyCounter.OnChange += CheckAppliesCount;
         }
 
-        public void SetEntity(EntityBase entity) => Entity = entity;
-        
+        public void SetEntity(EntityBase entity)
+        {
+            Entity = entity;
+            OnEntitySet?.Invoke();
+        }
+
         public void HandleUpdate(float time) => ApplyCooldown.Tick(time);
         
         protected void CheckAppliesCount()

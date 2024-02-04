@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards.Configs
+namespace Configs.Cards.EnemyCardsConfigs
 {
     [CreateAssetMenu(fileName = nameof(GreenSlimeCardConfig), menuName = "Configs/Cards/" + nameof(GreenSlimeCardConfig))]
     public class GreenSlimeCardConfig : CardConfigBase

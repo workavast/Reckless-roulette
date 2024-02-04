@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards.Configs
+namespace Configs.Cards
 {
     [CreateAssetMenu(fileName = "HealCardConfig", menuName = "Configs/Cards/HealCardConfig")]
     public class HealCardConfig : CardConfigBase

@@ -1,4 +1,4 @@
-using Cards.Configs;
+using Configs.Cards.EffectCardConfig;
 
 namespace EffectsSystem
 {

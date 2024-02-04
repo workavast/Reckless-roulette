@@ -13,5 +13,6 @@ namespace Cards
         GolemPurple = 80,
         Eye = 90,
         EyeAngry = 100,
+        PowerUp = 110,
     }
 }
