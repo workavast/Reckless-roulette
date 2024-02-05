@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cards;
+using Cards.CardsLogics.BossCards;
 using Factories;
 using GameCycle;
 using UI_System.CardUi;
@@ -47,9 +48,9 @@ namespace UI_System.Elements
             foreach (var movableCard in _movableCards)
                 movableCard.HandleUpdate(Time.deltaTime);
         }
-    
+
         public void SpawnNewCard(CardType cardType)
-        {           
+        {
             var movableCard = _cardFactory.Create(cardType);
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
@@ -59,7 +60,7 @@ namespace UI_System.Elements
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);
             movableCard.OnReachDestination += CheckFillLine;
-        
+
             for (int i = 0; i < cardHolders.Length; i++)
             {
                 if (!cardHolders[i].HaveMovableCard)
@@ -69,8 +70,18 @@ namespace UI_System.Elements
                     return;
                 }
             }
-        
+
             OnFillLine?.Invoke();
+        }
+
+        public void ClearCardLine()
+        {
+            List<MovableCard> cards = new(_movableCards); 
+            foreach (var movableCard in cards)
+            {
+                if (!InheritsFrom(movableCard.CardLogicType, typeof(BossCardLogicBase)))
+                    RemoveCard(movableCard.HolderIndex);
+            }
         }
         
         private void CheckFillLine()
@@ -114,6 +125,23 @@ namespace UI_System.Elements
             _gameCycleController.RemoveListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
             _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
             _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
+        }
+        
+        private static bool InheritsFrom(Type type, Type baseType)
+        {
+            // check all base types
+            var currentType = type;
+            while (currentType != null)
+            {
+                if (currentType.BaseType == baseType)
+                {
+                    return true;
+                }
+
+                currentType = currentType.BaseType;
+            }
+
+            return false;
         }
     }
 }

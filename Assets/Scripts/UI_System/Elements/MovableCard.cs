@@ -18,6 +18,7 @@ namespace UI_System.CardUi
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
         public bool Interactable { get; private set; } = true;
+        public Type CardLogicType => _cardLogicBase.MyType;
 
         private Vector3 _currentCardLinePosition;
         private RectTransform _rectTransform;

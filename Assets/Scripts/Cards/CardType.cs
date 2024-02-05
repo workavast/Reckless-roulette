@@ -40,6 +40,8 @@ namespace Cards
         
         PowerUp = 110,
         
-        BossBigSlime = 120
+        BossBigSlime = 120,
+        
+        ClearCardLine = 200
     }
 }
