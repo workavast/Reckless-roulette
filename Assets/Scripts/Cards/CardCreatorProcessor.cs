@@ -35,7 +35,7 @@ namespace Cards
 
         public void CreateBossCard()
         {
-            _cardLine.SpawnNewCard(_bossCard);
+            _cardLine.SpawnBossCard(_bossCard);
         }
     }
 }

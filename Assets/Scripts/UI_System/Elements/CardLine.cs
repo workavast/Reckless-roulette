@@ -22,7 +22,11 @@ namespace UI_System.Elements
     
         private readonly List<MovableCard> _movableCards = new();
 
+        private MovableCard _bossBuffer;
+        
+        public bool IsFull { get; private set; }
         public event Action OnFillLine;
+        public event Action OnRemoveCard;
 
         private void Awake()
         {
@@ -48,9 +52,61 @@ namespace UI_System.Elements
             foreach (var movableCard in _movableCards)
                 movableCard.HandleUpdate(Time.deltaTime);
         }
-
-        public void SpawnNewCard(CardType cardType)
+        
+        private void BossBufferCheck()
         {
+            if(_bossBuffer is null) return;
+            
+            for (int i = 0; i < cardHolders.Length; i++)
+            {
+                if (!cardHolders[i].HaveMovableCard)
+                {
+                    cardHolders[i].SetCard();
+                    _bossBuffer.SetDestination(i, cardHolders[i].transform);
+                    _movableCards.Add(_bossBuffer);
+                    _bossBuffer = null;
+                    return;
+                }
+            }
+        }
+
+        public void SpawnBossCard(CardType cardType)
+        {
+            var movableCard = _cardFactory.Create(cardType);
+            _container.Inject(movableCard);
+            //need cus without this card spawned in the center of screen for one frame
+            movableCard.transform.position = cardSpawnPos.position;
+            movableCard.transform.SetParent(cardParent);
+            movableCard.SetStartPosition(cardSpawnPos);
+            movableCard.OnUse += RemoveCard;
+            movableCard.OnReachDestination += CheckFillLine;
+            
+            if (IsFull)
+            {
+                _bossBuffer = movableCard;
+                OnRemoveCard += BossBufferCheck;
+                return;
+            }
+            
+            _movableCards.Add(movableCard);
+            for (int i = 0; i < cardHolders.Length; i++)
+            {
+                if (!cardHolders[i].HaveMovableCard)
+                {
+                    cardHolders[i].SetCard();
+                    movableCard.SetDestination(i, cardHolders[i].transform);
+                    return;
+                }
+            }
+            
+            CheckFillLine();
+        }
+
+        
+        public void SpawnNewCard(CardType cardType)
+        {           
+            if (IsFull) return;
+            
             var movableCard = _cardFactory.Create(cardType);
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
@@ -60,7 +116,7 @@ namespace UI_System.Elements
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);
             movableCard.OnReachDestination += CheckFillLine;
-
+            
             for (int i = 0; i < cardHolders.Length; i++)
             {
                 if (!cardHolders[i].HaveMovableCard)
@@ -71,9 +127,9 @@ namespace UI_System.Elements
                 }
             }
 
-            OnFillLine?.Invoke();
+            CheckFillLine();
         }
-
+        
         public void ClearCardLine()
         {
             List<MovableCard> cards = new(_movableCards); 
@@ -86,26 +142,36 @@ namespace UI_System.Elements
         
         private void CheckFillLine()
         {
-            if(_movableCards.Count < cardHolders.Length) return;
-        
-            bool allLineOccupied = true;
-            foreach (var movableCard in _movableCards)
-                if (!movableCard.IsReachDestination) allLineOccupied = false;
-    
-            if (allLineOccupied)
+            if (_movableCards.Count < cardHolders.Length)
+            {
+                IsFull = false;
+                return;
+            }
+
+            if (!IsFull)
+            {
+                IsFull = true;
                 OnFillLine?.Invoke();
+            }
+            
+            IsFull = true;
         }
 
         private void RemoveCard(int holderIndex)
         {
+            if(_movableCards.Count <= holderIndex) return;
+
             var movableCard = _movableCards[holderIndex];
             _movableCards.RemoveAt(holderIndex);
             cardHolders[holderIndex].ResetCard();
             Destroy(movableCard.gameObject);
-
+            
             UpdateCardsDestinations(holderIndex);
-        }
 
+            CheckFillLine();
+            OnRemoveCard?.Invoke();
+        }
+        
         private void UpdateCardsDestinations(int holderIndex)
         {
             foreach (var movableCard in _movableCards)

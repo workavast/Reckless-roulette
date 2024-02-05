@@ -19,7 +19,8 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
     [Inject] private PlayerHero _playerHero;
     [Inject] private PathManager _pathManager;
     [Inject] private GameCycleController _gameCycleController;
-        
+
+    private bool _bossCardSpawned;
     private CardCreatorProcessor _cardCreatorProcessor;
     private Timer _spawnTimer;
     
@@ -35,7 +36,8 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
         _cardCreatorProcessor = new CardCreatorProcessor(locationCardsConfig, _cardLine);
 
         _playerHero.OnDie += LooseGame;
-        _cardLine.OnFillLine += LooseGame;
+        _cardLine.OnFillLine += WaitWhenCardLineHaveFreePlace;
+        _cardLine.OnRemoveCard += TryContinueSpawnTimer;
         _pathManager.OnArriveDestination += ArriveDestination;
     }
 
@@ -54,8 +56,17 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
 
     private void ArriveDestination()
     {
+        _bossCardSpawned = true;
         _spawnTimer.SetPause();
         _cardCreatorProcessor.CreateBossCard();
+    }
+
+    private void WaitWhenCardLineHaveFreePlace() => _spawnTimer.SetPause();
+
+    private void TryContinueSpawnTimer()
+    {
+        if(!_cardLine.IsFull && !_bossCardSpawned)
+            _spawnTimer.Continue();
     }
     
     private void LooseGame()
