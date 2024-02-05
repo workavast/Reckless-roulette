@@ -42,6 +42,7 @@ namespace Cards
         
         BossBigSlime = 120,
         
-        ClearCardLine = 200
+        ClearCardLine = 200,
+        KillEnemyAndTakeDamageCard = 201
     }
 }
