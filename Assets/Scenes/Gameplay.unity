@@ -1289,7 +1289,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationCardsConfig: {fileID: 11400000, guid: b66bbed7427e0d34694f5c19ac7e9e63,
     type: 2}
-  bossCard: 120
 --- !u!4 &1047600223
 Transform:
   m_ObjectHideFlags: 0
