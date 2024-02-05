@@ -53,6 +53,8 @@ MonoBehaviour:
     minValue: 0
   attackDamage: 2
   attackSpeed: 15
+  expType: 0
+  expValue: 5
 --- !u!61 &-1788022916931191041
 BoxCollider2D:
   m_ObjectHideFlags: 0

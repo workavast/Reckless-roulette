@@ -11,7 +11,7 @@ namespace SomeStorages
         public override bool IsEmpty => currentValue <= minValue;
 
         public override event Action<float> OnMaxValueChange;
-        public override event Action<float> OnCurrentValueChange;
+        public override event Action OnCurrentValueChange;
         public override event Action<float> OnMinValueChange;
         public override event Action OnChange;
 
@@ -42,7 +42,7 @@ namespace SomeStorages
         public override void SetCurrentValue(float newCurrentValue)
         {
             currentValue = Mathf.Clamp(newCurrentValue, minValue, maxValue);
-            OnCurrentValueChange?.Invoke(currentValue);
+            OnCurrentValueChange?.Invoke();
             OnChange?.Invoke();
         }
 
@@ -57,7 +57,7 @@ namespace SomeStorages
         public override void ChangeCurrentValue(float value)
         {
             currentValue = Mathf.Clamp(currentValue + value, minValue, maxValue);
-            OnCurrentValueChange?.Invoke(currentValue);
+            OnCurrentValueChange?.Invoke();
             OnChange?.Invoke();
         }
     }

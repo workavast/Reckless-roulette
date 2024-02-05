@@ -137,6 +137,10 @@ MonoBehaviour:
     minValue: 0
   attackDamage: 2
   attackSpeed: 20
+  damageLevelConfig: {fileID: 11400000, guid: e944feb2770e5a04b96ea184f20e4117, type: 2}
+  healthPointsLevelConfig: {fileID: 11400000, guid: 9dde3041a2d1852429ae100b0350b2a7,
+    type: 2}
+  armorLevelConfig: {fileID: 11400000, guid: 65b670ccab1aea74e87a3ba5a2ce3b26, type: 2}
   moveSpeed: 0.5
 --- !u!61 &748906593309295052
 BoxCollider2D:

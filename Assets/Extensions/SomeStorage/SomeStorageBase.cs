@@ -18,7 +18,7 @@ namespace SomeStorages
         public abstract bool IsEmpty { get; }
 
         public abstract event System.Action<TDataType> OnMaxValueChange;
-        public abstract event System.Action<TDataType> OnCurrentValueChange;
+        public abstract event System.Action OnCurrentValueChange;
         public abstract event System.Action<TDataType> OnMinValueChange;
         public abstract event System.Action OnChange;
         

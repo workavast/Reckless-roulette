@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints:
-    maxValue: 10
-    currentValue: 10
+    maxValue: 30
+    currentValue: 30
     minValue: 0
-  attackDamage: 2
+  attackDamage: 5
   attackSpeed: 15
+  expType: 30
+  expValue: 20
 --- !u!61 &-1788022916931191041
 BoxCollider2D:
   m_ObjectHideFlags: 0
