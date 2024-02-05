@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using PlayerLevelSystem;
 using TMPro;
 using UnityEngine;
@@ -17,9 +18,9 @@ namespace UI_System.Elements
         
         private void Start()
         {
-            damageLevels.Init(_playerHero.DamageLevelSystem);
-            healthPointsLevels.Init(_playerHero.HealthPointsLevelSystem);
-            armorLevels.Init(_playerHero.ArmorLevelSystem);
+            damageLevels.Init(this, _playerHero.DamageLevelSystem);
+            healthPointsLevels.Init(this, _playerHero.HealthPointsLevelSystem);
+            armorLevels.Init(this, _playerHero.ArmorLevelSystem);
         }
         
         [Serializable]
@@ -28,20 +29,50 @@ namespace UI_System.Elements
             [SerializeField] private TMP_Text level;
             [SerializeField] private Slider experienceBar;
 
+            private PlayerHeroLevelVisualization _playerHeroLevelVisualization;
             private LevelSystemBaseBase _levelSystemBaseBase;
-        
-            public void Init(LevelSystemBaseBase levelSystemBaseBase)
+            private bool _coroutineIsActive;
+            private float _targetValue;
+            
+            public void Init(PlayerHeroLevelVisualization playerHeroLevelVisualization, LevelSystemBaseBase levelSystemBaseBase)
             {
+                _playerHeroLevelVisualization = playerHeroLevelVisualization;
                 _levelSystemBaseBase = levelSystemBaseBase;
                 _levelSystemBaseBase.ExperienceCounter.OnChange += UpdateInfo;
                 _levelSystemBaseBase.LevelsCounter.OnChange += UpdateInfo;
-                UpdateInfo();
+
+                SetInfo();
             }
 
-            private void UpdateInfo()
+            private void SetInfo()
             {
                 level.text = $"{_levelSystemBaseBase.LevelsCounter.CurrentValue}";
                 experienceBar.value = _levelSystemBaseBase.ExperienceCounter.FillingPercentage;
+            }
+            
+            private void UpdateInfo()
+            {
+                level.text = $"{_levelSystemBaseBase.LevelsCounter.CurrentValue}";
+                // experienceBar.value = _levelSystemBaseBase.ExperienceCounter.FillingPercentage;
+                
+                _targetValue = _levelSystemBaseBase.ExperienceCounter.FillingPercentage;
+                if (!_coroutineIsActive)
+                    _playerHeroLevelVisualization.StartCoroutine(ChangeBarValue());
+            }
+            
+            
+            private IEnumerator ChangeBarValue()
+            {
+                _coroutineIsActive = true;
+
+                while (Mathf.Abs(experienceBar.value - _targetValue) > 0.01f)
+                {
+                    experienceBar.value = Mathf.Lerp(experienceBar.value,_targetValue, 2.5f * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
+
+                experienceBar.value = _targetValue;
+                _coroutineIsActive = false;
             }
         }
     }
