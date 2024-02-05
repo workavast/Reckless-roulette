@@ -23,13 +23,11 @@ namespace CustomTimer
                 TimerIsEnd = true;
         }
         
-        public void SetMaxValue(float newMaxValue, bool saveCurrentValue = false)
+        public void SetMaxValue(float newMaxValue, float currentValue = 0)
         {
             MaxTime = newMaxValue;
-            if (saveCurrentValue)
-                CurrentTime = Mathf.Clamp(CurrentTime, 0, MaxTime);
-            else
-                CurrentTime = 0;
+
+            CurrentTime = Mathf.Clamp(currentValue, 0, MaxTime);
         }
 
         public void Reset(bool paused = false)

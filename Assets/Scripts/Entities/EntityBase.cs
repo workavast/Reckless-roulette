@@ -1,4 +1,5 @@
 using System;
+using CustomTimer;
 using EffectsSystem;
 using SelectableSystem;
 using SomeStorages;
@@ -13,19 +14,27 @@ namespace Entities
         [Tooltip("attack speed per minute")] 
         [SerializeField] protected float attackSpeed;
         
+        protected float FullAttackDamage => Mathf.Clamp(attackDamage + _additionalAttackDamage, 0, float.MaxValue);
+        protected float FullTakeDamage => Mathf.Clamp(_additionalTakeDamage, 0, float.MaxValue);
+
+        protected Timer AttackCooldown;
+        protected bool IsDead;
+
+        private float _additionalAttackDamage;
+        private float _additionalTakeDamage;
+        
         public EffectsProcessor EffectsProcessor;
         public IReadOnlySomeStorage<float> HealthPoints => healthPoints;
-
-        // protected SomeStorageFloat _currentAttackDamage;
-
         
         protected event Action<float> OnUpdate;
         
         private void Awake()
         {
+            AttackCooldown = new Timer(60/attackSpeed);
             EffectsProcessor = new EffectsProcessor(this);
 
             OnUpdate += EffectsProcessor.HandleUpdate;
+            OnUpdate += AttackCooldown.Tick;
 
             OnAwake();
         }
@@ -33,10 +42,11 @@ namespace Entities
         protected virtual void OnAwake(){}
         
         public abstract void TakeDamage(float damage);
-
-        public void ChangeDamage(float changeValue)
+        
+        public void ChangeAdditionalDamage(float additionalAttackDamage, float additionalTakeDamage)
         {
-            attackDamage += changeValue;
+            _additionalAttackDamage += additionalAttackDamage;
+            _additionalTakeDamage += additionalTakeDamage;
         }
         
         public void TakeHeal(float heal)

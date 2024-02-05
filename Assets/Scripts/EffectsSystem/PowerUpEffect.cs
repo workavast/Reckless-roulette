@@ -17,12 +17,12 @@ namespace EffectsSystem
 
         private void SetEffect()
         {
-            Entity.ChangeDamage(_additionalDamage);
+            Entity.ChangeAdditionalDamage(_additionalDamage, 0);
         }
         
         private void RemoveEffect(EffectBase effectBase)
         {
-            Entity.ChangeDamage(-_additionalDamage);
+            Entity.ChangeAdditionalDamage(-_additionalDamage, 0);
         }
         
         protected override void EffectApply()

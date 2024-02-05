@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Cards.CardsLogics.BossCards;
 using Enemies;
-using Entities.Enemies;
+using Entities.EnemiesGroups;
 using Factories;
 using GameCycle;
 using UnityEngine;
@@ -15,72 +15,72 @@ namespace Managers
         [SerializeField] private Transform fightPoint;
         [SerializeField] private float step;
 
-        [Inject] private BossFactory _bossFactory;
-        [Inject] private EnemiesFactory _enemiesFactory;
+        [Inject] private BossGroupFactory _bossGroupFactory;
+        [Inject] private EnemiesGroupsFactory _enemyGroupsFactory;
         [Inject] private IGameCycleController _gameCycleController;
         
-        private readonly List<Enemy> _activeEnemies = new();
+        private readonly List<EnemyGroup> _activeEnemyGroups = new();
+        private readonly List<EnemyGroup> _removeList = new();
 
         private void Awake()
         {
             _gameCycleController.AddListener(GameCycleState.Gameplay, this);
         }
 
-        private readonly List<Enemy> _removeList = new();
         public void GameCycleUpdate()
         {
-            foreach (var enemy in _activeEnemies)
-                enemy.HandleUpdate(Time.deltaTime);
+            foreach (var enemyGroup in _activeEnemyGroups)
+                enemyGroup.HandleUpdate(Time.deltaTime);
 
-            DestroyRemoveEnemies();
+            DestroyRemoveEnemyGroups();
         }
         
-        public void SpawnBoss(BossType bossType)
+        public void SpawnBossGroup(BossType bossType)
         {
-            foreach (var enemy in _activeEnemies)
-                if(enemy.transform.position.x >= spawnPoint.position.x)
-                    RemoveEnemy(enemy);
+            foreach (var enemyGroup in _activeEnemyGroups)
+                if(enemyGroup.transform.position.x >= spawnPoint.position.x)
+                    RemoveEnemyGroup(enemyGroup);
             
-            DestroyRemoveEnemies();
-
-            var boss = _bossFactory.Create(bossType);
-            boss.SetFightPoint(fightPoint);
-            boss.transform.position = spawnPoint.position;
-            boss.OnDie += RemoveEnemy;
-            _activeEnemies.Add(boss);
+            DestroyRemoveEnemyGroups();
+        
+            var bossGroup = _bossGroupFactory.Create(bossType);
+            bossGroup.SetEnemiesCount(int.MaxValue);
+            bossGroup.SetPoints(spawnPoint.position, fightPoint);
+            bossGroup.OnGroupDie += RemoveEnemyGroup;
+            _activeEnemyGroups.Add(bossGroup);
         }
         
-        public void SpawnEnemy(EnemyType enemyType)
+        public void SpawnEnemyGroup(EnemyType enemyType, int enemiesCount)
         {
-            var enemy = _enemiesFactory.Create(enemyType);
-            enemy.SetFightPoint(fightPoint);
+            var enemyGroup = _enemyGroupsFactory.Create(enemyType);
             
             float lastEnemyPos = 0;
-            if(_activeEnemies.Count > 0)
-                lastEnemyPos = _activeEnemies[^1].transform.position.x;
+            if(_activeEnemyGroups.Count > 0)
+                lastEnemyPos = _activeEnemyGroups[^1].transform.position.x;
             
             float offset;
             if (lastEnemyPos + step <= spawnPoint.transform.position.x)
                 offset = 0;
             else
                 offset = lastEnemyPos + step - spawnPoint.transform.position.x;
-            
-            enemy.transform.position = spawnPoint.position + Vector3.right * offset;
-            enemy.OnDie += RemoveEnemy;
-            _activeEnemies.Add(enemy);
+
+            enemyGroup.SetEnemiesCount(enemiesCount);
+            enemyGroup.SetPoints(spawnPoint.position + Vector3.right * offset, fightPoint);
+            enemyGroup.OnGroupDie += RemoveEnemyGroup;
+            _activeEnemyGroups.Add(enemyGroup);
         }
         
-        private void RemoveEnemy(Enemy enemy)
+        private void RemoveEnemyGroup(EnemyGroup enemy)
         {
             _removeList.Add(enemy);
         }
 
-        private void DestroyRemoveEnemies()
+        private void DestroyRemoveEnemyGroups()
         {
-            foreach (var enemy in _removeList)
+            foreach (var enemyGroup in _removeList)
             {
-                _activeEnemies.Remove(enemy);
-                Destroy(enemy.gameObject);
+                _activeEnemyGroups.Remove(enemyGroup);
+                Destroy(enemyGroup.gameObject);
             }
             
             _removeList.Clear();

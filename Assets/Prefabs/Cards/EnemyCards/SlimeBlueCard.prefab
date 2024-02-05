@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cf7a78f6fcf985c46ad149d3de530a6d,
+      objectReference: {fileID: -404606328, guid: 30ee4937d18ef4f4dafb95711ea024c4,
         type: 3}
     - target: {fileID: 2884343182649153811, guid: 401c1df2332f0594cbb9daf15eba72fa,
         type: 3}
@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 2884343182649153811, guid: 401c1df2332f0594cbb9daf15eba72fa,
         type: 3}
       propertyPath: m_fontSize
-      value: 17.5
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6992491220330621178, guid: 401c1df2332f0594cbb9daf15eba72fa,
         type: 3}
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1bc59cc515416e9b356168706377de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <EnemiesCount>k__BackingField: 1

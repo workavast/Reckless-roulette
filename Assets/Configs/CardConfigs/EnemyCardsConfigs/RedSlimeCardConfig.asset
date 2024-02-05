@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4780e19cfb7549ee84e96b5a91bdc598, type: 3}
   m_Name: RedSlimeCardConfig
   m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: -1885535943, guid: 1610729be8328954583665d511116547,
-    type: 3}
+  <EnemiesCount>k__BackingField: 1

@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d2cbb23e06485cae36b15264a33d83, type: 3}
   m_Name: BlueSlimeCardConfig
   m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: -1325758530, guid: 1803b606b9cdaf8409174da2cfc74e66,
-    type: 3}
+  <EnemiesCount>k__BackingField: 1

@@ -4,6 +4,7 @@ namespace EffectsSystem
     {
         Poison = 0,
         TimeHeal = 10,
-        PowerUp = 20
+        PowerUp = 20,
+        RecklessRage = 30
     }
 }

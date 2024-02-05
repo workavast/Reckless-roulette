@@ -4,6 +4,7 @@ using CustomTimer;
 using Enemies;
 using Entities;
 using Entities.Enemies;
+using Entities.EnemiesGroups;
 using EventBusExtension;
 using Events;
 using GameCycle;
@@ -11,7 +12,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Collider2D))]
-public class PlayerHero : EntityBase, IEventReceiver<EnemyReachFightPoint>, IGameCycleUpdate, ICardTarget
+public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>, IGameCycleUpdate, ICardTarget
 {
     [Inject] private EventBus _eventBus;
     [Inject] private IGameCycleController _gameCycleController;
@@ -22,8 +23,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyReachFightPoint>, IGam
     public event Action OnDie;
     public event Action<float> OnMove;
 
-    private Enemy _enemyForFight;
-    private Timer _attackCooldown;
+    private EnemyGroup _enemyForFight;
     
     protected override void OnAwake()
     {
@@ -31,17 +31,16 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyReachFightPoint>, IGam
         
         _eventBus.Subscribe(this);
         
-        _attackCooldown = new Timer(60 / attackSpeed);
-        
         OnUpdate += Move;
-        OnUpdate += _attackCooldown.Tick;
     }
 
     public void GameCycleUpdate() => HandleUpdate(Time.deltaTime);
     
     public override void TakeDamage(float damage)
     {
-        healthPoints.ChangeCurrentValue(-damage);
+        if(IsDead) return;
+        
+        healthPoints.ChangeCurrentValue(-(damage + FullTakeDamage));
         if (healthPoints.IsEmpty)
         {
             OnDie?.Invoke();
@@ -56,8 +55,8 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyReachFightPoint>, IGam
 
     private void Attack()
     {
-        _attackCooldown.Reset();
-        _enemyForFight.TakeDamage(attackDamage);
+        AttackCooldown.Reset();
+        _enemyForFight.TakeDamage(FullAttackDamage);
     }
     
     private void Die()
@@ -65,22 +64,22 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyReachFightPoint>, IGam
         OnDie?.Invoke();
     }
 
-    public void OnEvent(EnemyReachFightPoint @event)
+    public void OnEvent(EnemyGroupReachFightPoint @event)
     {
-        _enemyForFight = @event.Enemy;
-        _enemyForFight.OnDie += OnEnemyDieOnFightPoint;
+        _enemyForFight = @event.EnemyGroup;
+        _enemyForFight.OnGroupDie += OnEnemyDieOnFightPoint;
         OnUpdate -= Move;
-        _attackCooldown.OnTimerEnd += Attack;
+        AttackCooldown.OnTimerEnd += Attack;
         
-        if(_attackCooldown.TimerIsEnd)
+        if(AttackCooldown.TimerIsEnd)
             Attack();
     }
 
-    private void OnEnemyDieOnFightPoint(Enemy enemy)
+    private void OnEnemyDieOnFightPoint(EnemyGroup enemy)
     {
-        _enemyForFight.OnDie -= OnEnemyDieOnFightPoint;
+        _enemyForFight.OnGroupDie -= OnEnemyDieOnFightPoint;
         OnUpdate += Move;
-        _attackCooldown.OnTimerEnd -= Attack;
+        AttackCooldown.OnTimerEnd -= Attack;
     }
     
     private void OnDestroy()

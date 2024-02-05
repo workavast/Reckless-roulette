@@ -10,6 +10,8 @@ namespace Cards
         [field: SerializeField] public CardType BossCard { get; private set; }
         [SerializeField] private DictionaryInspector<CardType, CardChance> cards;
 
+        public IReadOnlyDictionary<CardType, CardChance> Cards => cards;
+        
         public int CardsCount => cards.Count;
         
         public IReadOnlyList<CardChanceRange> TakeCardChances()

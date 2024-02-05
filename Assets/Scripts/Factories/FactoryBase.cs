@@ -14,6 +14,7 @@ namespace Factories
         protected abstract bool UseParents { get; }
         
         [SerializeField] private DictionaryInspector<TEnum, TObject> prefabs;
+        protected DictionaryInspector<TEnum, TObject> Prefabs = new();
 
         private readonly Dictionary<TEnum, Transform> _parents = new ();
 
@@ -21,26 +22,27 @@ namespace Factories
         
         private void Awake()
         {
+            Prefabs = prefabs;
+            
             var types = EnumValuesTool.GetValues<TEnum>();
 
-            if(!UseParents) return;
-            
-            foreach (var type in types)
-            {
-                var parent = new GameObject
+            if(UseParents) 
+                foreach (var type in types)
                 {
-                    name = type.ToString(),
-                    transform = {parent = transform}
-                };
-                _parents.Add(type, parent.transform);
-            }
+                    var parent = new GameObject
+                    {
+                        name = type.ToString(),
+                        transform = {parent = transform}
+                    };
+                    _parents.Add(type, parent.transform);
+                }
         }
 
         public TObject Create(TEnum type)
         {
             var newGameObject = UseParents 
-                ? _container.InstantiatePrefab(prefabs[type], _parents[type]) 
-                : _container.InstantiatePrefab(prefabs[type]);
+                ? _container.InstantiatePrefab(Prefabs[type], _parents[type]) 
+                : _container.InstantiatePrefab(Prefabs[type]);
             
             return newGameObject.GetComponent<TObject>();
         }
