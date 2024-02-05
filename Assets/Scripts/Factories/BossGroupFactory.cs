@@ -1,9 +1,9 @@
 using Cards.CardsLogics.BossCards;
-using Entities.Enemies;
+using Entities.EnemiesGroups;
 
 namespace Factories
 {
-    public class BossFactory : FactoryBase<BossType, Enemy>
+    public class BossGroupFactory : FactoryBase<BossType, EnemyGroup>
     {
         protected override bool UseParents => true;
     }

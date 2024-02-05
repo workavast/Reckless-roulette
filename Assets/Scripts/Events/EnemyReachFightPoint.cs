@@ -1,4 +1,3 @@
-using Enemies;
 using Entities.Enemies;
 using EventBusExtension;
 

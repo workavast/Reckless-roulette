@@ -1,93 +1,66 @@
 using System;
 using Cards;
-using CustomTimer;
 using EventBusExtension;
-using Events;
 using UnityEngine;
 using Zenject;
 
 namespace Entities.Enemies
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Enemy : EntityBase, IEventReceiver<PlayerHeroMove>, ICardTarget
+    public class Enemy : EntityBase, ICardTarget
     {
         [Inject] protected PlayerHero PlayerHero;
-        [Inject] protected EventBus EventBus;
 
         public ReceiverIdentifier ReceiverIdentifier { get; } = new();
         public bool StayInFightPoint { get; private set; }
-        
+
         private Transform _fightPoint;
-        private Timer _attackCooldown;
 
         private bool _isDead;
-        private bool _disposed;
         public event Action<Enemy> OnDie;
+        public event Action OnAttack;
 
         protected override void OnAwake()
         {
-            EventBus.Subscribe(this);
+            base.OnAwake();
+            
+            AttackCooldown.SetPause();
+        }
 
-            _attackCooldown = new Timer(60 / attackSpeed);
-                
-            OnUpdate += _attackCooldown.Tick;
-        }
-        
-        public void SetFightPoint(Transform fightPoint)
-        {
-            _fightPoint = fightPoint;
-        }
-        
         public override void TakeDamage(float damage)
         {
-            if(_isDead) return;
-            
+            if (_isDead) return;
+
             healthPoints.ChangeCurrentValue(-damage);
 
             if (healthPoints.IsEmpty)
             {
                 _isDead = true;
                 OnDie?.Invoke(this);
-                Dispose();
             }
         }
-        
-        public void OnEvent(PlayerHeroMove @event)
-        {
-            Move(@event.MoveDistance);
-        }
 
-        private void Move(float distance)
-        {
-            transform.Translate(Vector3.left * distance);
+        public void ArriveFightPoint()
+        { 
+            StayInFightPoint = true;
 
-            if (transform.position.x <= _fightPoint.position.x)
-            {
-                StayInFightPoint = true;
-
-                _attackCooldown.OnTimerEnd += Attack;
-                if(_attackCooldown.TimerIsEnd) Attack();
-                
-                EventBus.Invoke(new EnemyReachFightPoint(this));
-            }
+            AttackCooldown.OnTimerEnd += Attack;
+            if (AttackCooldown.TimerIsEnd) Attack();
         }
 
         private void Attack()
         {
-            _attackCooldown.Reset();
+            AttackCooldown.SetMaxValue(60/attackSpeed);
+            AttackCooldown.Reset();
+            AttackCooldown.SetPause();
             PlayerHero.TakeDamage(attackDamage);
+            
+            OnAttack?.Invoke();
         }
 
-        private void OnDestroy()
+        public void StartAttackCooldown()
         {
-            Dispose();
-        }
-
-        private void Dispose()
-        {
-            if(_disposed) return;
-            _disposed = true;
-            EventBus.UnSubscribe(this);
+            AttackCooldown.Continue();
         }
     }
 }

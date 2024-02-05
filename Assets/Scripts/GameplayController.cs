@@ -12,7 +12,6 @@ using Zenject;
 public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
 { 
     [SerializeField] private LocationCardsConfig locationCardsConfig;
-    [SerializeField] private CardType bossCard;
 
     [Inject] private EventBus _eventBus;
     [Inject] private UI_Controller _uiController;
@@ -33,7 +32,7 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
         _spawnTimer = new Timer(2);
         _spawnTimer.OnTimerEnd += CreateCard;
         
-        _cardCreatorProcessor = new CardCreatorProcessor(bossCard, locationCardsConfig, _cardLine);
+        _cardCreatorProcessor = new CardCreatorProcessor(locationCardsConfig, _cardLine);
 
         _playerHero.OnDie += LooseGame;
         _cardLine.OnFillLine += LooseGame;

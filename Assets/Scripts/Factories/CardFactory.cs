@@ -5,7 +5,7 @@ namespace Factories
 {
     public class CardFactory : FactoryBase<CardType, MovableCard>
     {
-        protected override bool UseParents { get; } = false;
+        protected override bool UseParents => false;
 
         // [Inject] private CardsConfigsRepository _cardsConfigsRepository;
         // [Inject] private DiContainer _container;

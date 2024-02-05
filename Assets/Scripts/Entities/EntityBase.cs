@@ -1,8 +1,10 @@
 using System;
+using CustomTimer;
 using EffectsSystem;
 using SelectableSystem;
 using SomeStorages;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Entities
 {
@@ -13,19 +15,20 @@ namespace Entities
         [Tooltip("attack speed per minute")] 
         [SerializeField] protected float attackSpeed;
         
+        protected Timer AttackCooldown;
+        
         public EffectsProcessor EffectsProcessor;
         public IReadOnlySomeStorage<float> HealthPoints => healthPoints;
-
-        // protected SomeStorageFloat _currentAttackDamage;
-
         
         protected event Action<float> OnUpdate;
         
         private void Awake()
         {
+            AttackCooldown = new Timer(60/attackSpeed);
             EffectsProcessor = new EffectsProcessor(this);
 
             OnUpdate += EffectsProcessor.HandleUpdate;
+            OnUpdate += AttackCooldown.Tick;
 
             OnAwake();
         }
