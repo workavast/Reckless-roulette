@@ -38,7 +38,9 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
     
     public override void TakeDamage(float damage)
     {
-        healthPoints.ChangeCurrentValue(-damage);
+        if(IsDead) return;
+        
+        healthPoints.ChangeCurrentValue(-(damage + FullTakeDamage));
         if (healthPoints.IsEmpty)
         {
             OnDie?.Invoke();
@@ -54,7 +56,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
     private void Attack()
     {
         AttackCooldown.Reset();
-        _enemyForFight.TakeDamage(attackDamage);
+        _enemyForFight.TakeDamage(FullAttackDamage);
     }
     
     private void Die()

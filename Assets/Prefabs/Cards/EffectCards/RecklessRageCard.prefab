@@ -10,23 +10,23 @@ PrefabInstance:
     - target: {fileID: 627569582316325364, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_text
-      value: "\u0423\u0441\u0438\u043B\u0435\u043D\u0438\u0435"
+      value: "\u042F\u0440\u043E\u0441\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 627569582316325364, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_fontSize
-      value: 15.55
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3528368244749922243, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -684485515, guid: 30ee4937d18ef4f4dafb95711ea024c4,
+      objectReference: {fileID: 21300000, guid: 66efb8074dad6174a8ddaa10f7ad33eb,
         type: 3}
     - target: {fileID: 4735812454058653725, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_Name
-      value: PowerUpCard
+      value: RecklessRageCard
       objectReference: {fileID: 0}
     - target: {fileID: 6422098742061501031, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2078b4e4de5d1274ca9d380d060ff527, type: 3}
 --- !u!1 &3146512089932953176 stripped
@@ -141,7 +146,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7643264180696747589}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-117440495675903637
+--- !u!114 &-1210135464965175962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +155,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3146512089932953176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3afb8ddc6a64d85936bbf71806ca120, type: 3}
+  m_Script: {fileID: 11500000, guid: 522c1c7401bd4b28a7b1c5fcf37b4ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

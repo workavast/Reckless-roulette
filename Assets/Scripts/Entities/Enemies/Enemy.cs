@@ -16,7 +16,6 @@ namespace Entities.Enemies
 
         private Transform _fightPoint;
 
-        private bool _isDead;
         public event Action<Enemy> OnDie;
         public event Action OnAttack;
 
@@ -29,13 +28,13 @@ namespace Entities.Enemies
 
         public override void TakeDamage(float damage)
         {
-            if (_isDead) return;
+            if (IsDead) return;
 
-            healthPoints.ChangeCurrentValue(-damage);
+            healthPoints.ChangeCurrentValue(-(damage + FullTakeDamage));
 
             if (healthPoints.IsEmpty)
             {
-                _isDead = true;
+                IsDead = true;
                 OnDie?.Invoke(this);
             }
         }
@@ -53,7 +52,7 @@ namespace Entities.Enemies
             AttackCooldown.SetMaxValue(60/attackSpeed);
             AttackCooldown.Reset();
             AttackCooldown.SetPause();
-            PlayerHero.TakeDamage(attackDamage);
+            PlayerHero.TakeDamage(FullAttackDamage);
             
             OnAttack?.Invoke();
         }

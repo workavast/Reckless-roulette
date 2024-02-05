@@ -164,4 +164,9 @@ MonoBehaviour:
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 2dd8a0cf4274cd7449f76d1af0872e36,
           type: 3}
-        <Chance>k__BackingField: 20
+        <Chance>k__BackingField: 1
+    - key: 202
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: fb7cb4c5ff788f14c9ef9f74de579841,
+          type: 3}
+        <Chance>k__BackingField: 1

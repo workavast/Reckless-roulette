@@ -43,6 +43,7 @@ namespace Cards
         BossBigSlime = 120,
         
         ClearCardLine = 200,
-        KillEnemyAndTakeDamageCard = 201
+        KillEnemyAndTakeDamage = 201,
+        RecklessRage = 202
     }
 }
