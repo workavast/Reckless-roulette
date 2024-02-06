@@ -52,7 +52,7 @@ MonoBehaviour:
     maxValue: 30
     currentValue: 30
     minValue: 0
-  attackDamage: 5
+  attackDamage: 30
   attackSpeed: 15
   expType: 30
   expValue: 20

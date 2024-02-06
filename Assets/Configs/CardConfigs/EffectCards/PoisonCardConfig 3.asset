@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PoisonCardConfig 3
   m_EditorClassIdentifier: 
   <TimeExist>k__BackingField: 5
-  <AppliesCount>k__BackingField: 5
-  <Damage>k__BackingField: 4
+  <AppliesCount>k__BackingField: 10
+  <Damage>k__BackingField: 3

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be790c12b06845d19c03de060980ad36, type: 3}
   m_Name: TimeHealEffectCardConfig
   m_EditorClassIdentifier: 
-  <TimeExist>k__BackingField: 2
+  <TimeExist>k__BackingField: 10
   <AppliesCount>k__BackingField: 20
-  <Heal>k__BackingField: 0.4
+  <Heal>k__BackingField: 0.3
