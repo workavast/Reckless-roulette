@@ -16,7 +16,7 @@ namespace PlayerLevelSystem
         {
             _eventBus = eventBus;
             LevelsConfig = levelsConfig;
-            _levelsCounter = new SomeStorageInt(LevelsConfig.Data.Count);
+            _levelsCounter = new SomeStorageInt(LevelsConfig.Data.Count-1);
             _experience = new SomeStorageFloat(LevelsConfig.Data[_levelsCounter.CurrentValue].ExperienceCount);
             
             eventBus.Subscribe(this);
@@ -37,13 +37,16 @@ namespace PlayerLevelSystem
         
         private void LevelUp()
         {
-            if(!_experience.IsFull)
+            if(!_experience.IsFull || _levelsCounter.IsFull)
                 return;
 
             _levelsCounter.ChangeCurrentValue(1);
             _experience.SetMaxValue(LevelsConfig.Data[_levelsCounter.CurrentValue].ExperienceCount);
             _experience.SetCurrentValue(0);
             ApplyLevelUp();
+            
+            if(_levelsCounter.IsFull)
+                _experience.OnCurrentValueChange -= LevelUp;
         }
 
         protected abstract void ApplyLevelUp();

@@ -23,7 +23,9 @@ namespace Entities.Enemies
         private Transform _fightPoint;
 
         public event Action<Enemy> OnDie;
-        public event Action OnAttack;
+        
+        public override event Action OnTakeDamage;
+        public override event Action OnAttack;
 
         protected override void OnAwake()
         {
@@ -44,6 +46,8 @@ namespace Entities.Enemies
                 IsDead = true;
                 OnDie?.Invoke(this);
             }
+            
+            OnTakeDamage?.Invoke();
         }
 
         public void ArriveFightPoint()

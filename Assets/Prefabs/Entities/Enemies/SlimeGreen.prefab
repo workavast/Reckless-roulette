@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804793641693280212}
   - component: {fileID: 7736247475753249420}
+  - component: {fileID: 2699038866541483107}
   - component: {fileID: 2435504129124905764}
   m_Layer: 0
   m_Name: SlimeGreen
@@ -55,6 +56,18 @@ MonoBehaviour:
   attackSpeed: 15
   expType: 10
   expValue: 10
+--- !u!114 &2699038866541483107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621844155852803610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfd003da1234b229b5e2e10d5e810e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2435504129124905764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 3749158668556662664}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99d2c343e341ac0419016c5542b351a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -229,6 +242,26 @@ PrefabInstance:
       propertyPath: selectable
       value: 
       objectReference: {fileID: 7736247475753249420}
+    - target: {fileID: 3910209615047199609, guid: ebacfd53e902e914babe8ed2762afb0d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910209615047199609, guid: ebacfd53e902e914babe8ed2762afb0d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910209615047199609, guid: ebacfd53e902e914babe8ed2762afb0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910209615047199609, guid: ebacfd53e902e914babe8ed2762afb0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4286844478599569103, guid: ebacfd53e902e914babe8ed2762afb0d,
         type: 3}
       propertyPath: m_AnchorMax.y

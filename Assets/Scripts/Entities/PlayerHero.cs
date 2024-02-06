@@ -31,7 +31,10 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
     public HealthPointsLevelSystem HealthPointsLevelSystem;
     public DamageLevelSystem DamageLevelSystem;
     public ArmorLevelSystem ArmorLevelSystem;
-    
+
+    public override event Action OnTakeDamage;
+    public override event Action OnAttack;
+
     protected override void OnAwake()
     {
         DamageLevelSystem = new DamageLevelSystem(damageLevelConfig, _eventBus, this);
@@ -54,9 +57,9 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         var dam = Mathf.Clamp(damage + FullTakeDamage - _armor, 0, float.MaxValue);
         healthPoints.ChangeCurrentValue(-dam);
         if (healthPoints.IsEmpty)
-        {
             OnDie?.Invoke();
-        }
+        
+        OnTakeDamage?.Invoke();
     }
 
     public void ChangeArmor(float value)
@@ -74,6 +77,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
     {
         AttackCooldown.Reset();
         _enemyForFight.TakeDamage(FullAttackDamage);
+        OnAttack?.Invoke();
     }
     
     private void Die()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804793641693280212}
   - component: {fileID: 7736247475753249420}
+  - component: {fileID: -8851092336589961609}
   - component: {fileID: -1788022916931191041}
   m_Layer: 0
   m_Name: EyeAngry
@@ -55,6 +56,18 @@ MonoBehaviour:
   attackSpeed: 15
   expType: 30
   expValue: 20
+--- !u!114 &-8851092336589961609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621844155852803610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfd003da1234b229b5e2e10d5e810e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &-1788022916931191041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 3749158668556662664}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 5c774c6de61de424ba5ead49b0777191, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

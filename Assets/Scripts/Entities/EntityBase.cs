@@ -27,6 +27,9 @@ namespace Entities
         public IReadOnlySomeStorage<float> HealthPoints => healthPoints;
         
         protected event Action<float> OnUpdate;
+
+        public abstract event Action OnTakeDamage;
+        public abstract event Action OnAttack;
         
         private void Awake()
         {
