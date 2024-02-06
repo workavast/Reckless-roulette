@@ -55,6 +55,7 @@ namespace Cards
         
         ClearCardLine = 200,
         KillEnemyAndTakeDamage = 201,
-        RecklessRage = 202
+        RecklessRage = 202,
+        ReshuffleCard = 203
     }
 }
