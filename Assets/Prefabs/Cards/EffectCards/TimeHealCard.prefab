@@ -21,7 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1816937478, guid: 8ea155ba576f31f4b81ab5a24f96f489,
+      objectReference: {fileID: 1862906072, guid: 30ee4937d18ef4f4dafb95711ea024c4,
         type: 3}
     - target: {fileID: 4735812454058653725, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
@@ -136,17 +136,17 @@ PrefabInstance:
     - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
-        type: 3}
-      propertyPath: m_LocalRotation.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2078b4e4de5d1274ca9d380d060ff527, type: 3}
@@ -168,3 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d343fae8c69e4e5fa3599a2028be76ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6003ade5dac6fbd4280bb416c3b21b1c, type: 2}

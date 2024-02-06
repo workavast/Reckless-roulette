@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 627569582316325364, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_text
-      value: "\u042F\u0434"
+      value: "\u041B\u0435\u0447\u0435\u043D\u0438\u0435"
       objectReference: {fileID: 0}
     - target: {fileID: 627569582316325364, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
@@ -21,12 +21,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 444354972, guid: a660b81a3a5bb004fa1ba1a19bb65758,
+      objectReference: {fileID: -110429322, guid: 30ee4937d18ef4f4dafb95711ea024c4,
         type: 3}
     - target: {fileID: 4735812454058653725, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_Name
-      value: PoisonCard
+      value: TimeHealCard 3
       objectReference: {fileID: 0}
     - target: {fileID: 6422098742061501031, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
@@ -133,12 +133,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7597152765028136622, guid: 2078b4e4de5d1274ca9d380d060ff527,
+    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2aa935b9e7ae42f4d84953c7b5e546b3,
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905032842267492209, guid: 2078b4e4de5d1274ca9d380d060ff527,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2078b4e4de5d1274ca9d380d060ff527, type: 3}
 --- !u!1 &3146512089932953176 stripped
@@ -147,7 +156,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7643264180696747589}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1968417056290759458
+--- !u!114 &5136957161472812396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,7 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3146512089932953176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b6ebae543e4e6083125617b0d7add4, type: 3}
+  m_Script: {fileID: 11500000, guid: d343fae8c69e4e5fa3599a2028be76ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poisonCardConfig: {fileID: 11400000, guid: 239ac19ddbf1a3d4699890d731bf50de, type: 2}
+  _config: {fileID: 11400000, guid: 4533eb62d4fadf34086f28e355f2d647, type: 2}

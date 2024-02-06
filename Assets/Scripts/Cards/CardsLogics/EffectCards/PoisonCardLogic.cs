@@ -2,13 +2,14 @@ using CastExtension;
 using Configs.Cards.EffectCardConfig;
 using EffectsSystem;
 using Entities;
+using UnityEngine;
 using Zenject;
 
 namespace Cards.CardsLogics.EffectCards
 {
     public class PoisonCardLogic : CardLogicBase
     {
-        [Inject] private PoisonCardConfig _poisonCardConfig;
+        [SerializeField] private PoisonCardConfig _poisonCardConfig;
         
         public override bool TryUse(ICardTarget target)
         {

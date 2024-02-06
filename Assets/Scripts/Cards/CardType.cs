@@ -15,8 +15,19 @@ namespace Cards
         SlimeRed3 = 22,
         
         Heal = 30,
+        Heal2 = 31,
+        Heal3 = 32,
+        Heal4 = 33,
+        
         Poison = 40,
+        Poison2 = 41,
+        Poison3 = 42,
+        Poison4 = 43,
+        
         TimeHeal = 50,
+        TimeHeal2 = 51,
+        TimeHeal3 = 52,
+        TimeHeal4 = 53,
         
         GolemOrange = 60,
         GolemOrange2 = 61,

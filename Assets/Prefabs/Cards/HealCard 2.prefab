@@ -121,7 +121,7 @@ PrefabInstance:
     - target: {fileID: 4380843479916428859, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_Name
-      value: HealCard
+      value: HealCard 2
       objectReference: {fileID: 0}
     - target: {fileID: 4983358653028147355, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
@@ -133,7 +133,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -183847408, guid: 8ea155ba576f31f4b81ab5a24f96f489,
+      objectReference: {fileID: 180351981, guid: 8ea155ba576f31f4b81ab5a24f96f489,
         type: 3}
     - target: {fileID: 8486627292721074130, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c447c15145640df9d1a94952b699fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healCardConfig: {fileID: 11400000, guid: b6ee68555d6a4144e9a688a2e1e8326d, type: 2}
+  _healCardConfig: {fileID: 11400000, guid: 2f57dc6c28ec1894f83be771a1d3218a, type: 2}

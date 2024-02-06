@@ -1356,6 +1356,33 @@ MonoBehaviour:
     - key: 202
       value: {fileID: 6788851641639372681, guid: fb7cb4c5ff788f14c9ef9f74de579841,
         type: 3}
+    - key: 31
+      value: {fileID: 1483409676892297515, guid: dd68c47e89092db4294846483b32a3aa,
+        type: 3}
+    - key: 32
+      value: {fileID: 1483409676892297515, guid: c45c0366083855642a84d3d0729d3cf8,
+        type: 3}
+    - key: 33
+      value: {fileID: 1483409676892297515, guid: db39f0786b3bc6a458817c48d526285b,
+        type: 3}
+    - key: 41
+      value: {fileID: 6788851641639372681, guid: 89084995bc5672442bd76c2741a5f6d5,
+        type: 3}
+    - key: 42
+      value: {fileID: 6788851641639372681, guid: 65f780dafe96470409766a04fe27f4ed,
+        type: 3}
+    - key: 43
+      value: {fileID: 6788851641639372681, guid: 5a79eacd2786b0a499393e444a73fcc1,
+        type: 3}
+    - key: 51
+      value: {fileID: 6788851641639372681, guid: 374d42b48a60576468a7e5194cf676c9,
+        type: 3}
+    - key: 52
+      value: {fileID: 6788851641639372681, guid: 62f22cd87900561418c90fdac7eaa4af,
+        type: 3}
+    - key: 53
+      value: {fileID: 6788851641639372681, guid: 2fb2f8e3e24e6ce40bb21fd1a7cd36c0,
+        type: 3}
 --- !u!1 &890040137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationCardsConfig: {fileID: 11400000, guid: b66bbed7427e0d34694f5c19ac7e9e63,
     type: 2}
+  minTime: 2
+  maxTime: 5
 --- !u!4 &1047600223
 Transform:
   m_ObjectHideFlags: 0

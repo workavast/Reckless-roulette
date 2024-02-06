@@ -21,12 +21,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 444354972, guid: a660b81a3a5bb004fa1ba1a19bb65758,
+      objectReference: {fileID: 490917387, guid: a660b81a3a5bb004fa1ba1a19bb65758,
         type: 3}
     - target: {fileID: 4735812454058653725, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
       propertyPath: m_Name
-      value: PoisonCard
+      value: PoisonCard 2
       objectReference: {fileID: 0}
     - target: {fileID: 6422098742061501031, guid: 2078b4e4de5d1274ca9d380d060ff527,
         type: 3}
@@ -159,4 +159,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b6ebae543e4e6083125617b0d7add4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poisonCardConfig: {fileID: 11400000, guid: 239ac19ddbf1a3d4699890d731bf50de, type: 2}
+  _poisonCardConfig: {fileID: 11400000, guid: d4103b4b01bbca24eab7be92054c8097, type: 2}

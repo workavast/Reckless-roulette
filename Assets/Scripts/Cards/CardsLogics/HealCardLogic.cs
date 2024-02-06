@@ -3,13 +3,14 @@ using Configs.Cards;
 using Entities;
 using EventBusExtension;
 using Events.Audio;
+using UnityEngine;
 using Zenject;
 
 namespace Cards.CardsLogics
 {
     public class HealCardLogic : CardLogicBase
     {
-        [Inject] private HealCardConfig _healCardConfig;
+        [SerializeField] private HealCardConfig _healCardConfig;
         [Inject] private EventBus _eventBus;
         
         public override bool TryUse(ICardTarget target)

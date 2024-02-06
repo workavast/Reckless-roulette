@@ -23,6 +23,9 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
     private bool _bossCardSpawned;
     private CardCreatorProcessor _cardCreatorProcessor;
     private Timer _spawnTimer;
+
+    [SerializeField] private float minTime; 
+    [SerializeField] private float maxTime; 
     
     public ReceiverIdentifier ReceiverIdentifier { get; } = new();
 
@@ -30,7 +33,8 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
     {
         _eventBus.Subscribe(this);
         
-        _spawnTimer = new Timer(2);
+        var newTime = Random.Range(minTime, maxTime);
+        _spawnTimer = new Timer(newTime);
         _spawnTimer.OnTimerEnd += CreateCard;
         
         _cardCreatorProcessor = new CardCreatorProcessor(locationCardsConfig, _cardLine);
@@ -50,6 +54,8 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
     
     private void CreateCard()
     {
+        var newTime = Random.Range(minTime, maxTime);
+        _spawnTimer.SetMaxValue(newTime);
         _spawnTimer.Reset();
         _cardCreatorProcessor.CreateRandomCard();
     }
