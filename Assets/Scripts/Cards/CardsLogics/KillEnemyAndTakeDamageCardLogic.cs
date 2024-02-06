@@ -13,10 +13,15 @@ namespace Cards.CardsLogics
         
         public override bool TryUse(ICardTarget target)
         {
-            if (target.TryCast(out Enemy enemy) && !target.CastPossible<BossBase>())
+            if (target.TryCast(out Enemy enemy))
             {
-                enemy.TakeDamage(float.MaxValue);
+                if (target.Cast<BossBase>())
+                    enemy.TakeDamage(7);
+                else
+                    enemy.TakeDamage(float.MaxValue);
+
                 _playerHero.TakeDamage(_config.PlayerDamage);
+
                 return true;
             }
 

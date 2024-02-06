@@ -75,7 +75,8 @@ namespace Managers
                 offset = lastEnemyPos + step - spawnPoint.transform.position.x;
 
             enemyGroup.SetEnemiesCount(enemiesCount);
-            enemyGroup.SetPoints(spawnPoint.position + Vector3.right * offset, fightPoint);
+            var dir = (spawnPoint.position - fightPoint.position).normalized;
+            enemyGroup.SetPoints(spawnPoint.position + dir * offset, fightPoint);
             enemyGroup.OnGroupDie += RemoveEnemyGroup;
             _activeEnemyGroups.Add(enemyGroup);
         }
