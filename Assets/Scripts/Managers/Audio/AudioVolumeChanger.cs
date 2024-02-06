@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Events.Audio;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Audio
@@ -11,9 +12,9 @@ namespace Audio
         private const string EffectsParam = "Effects";
         private const string MusicParam = "Music";
 
-        public float MasterVolume = 0.75f;
-        public float MusicVolume = 0.75f;
-        public float EffectsVolume = 0.75f;
+        public float MasterVolume => AudioSettingsStorage.MasterVolume;
+        public float MusicVolume => AudioSettingsStorage.MusicVolume;
+        public float EffectsVolume => AudioSettingsStorage.EffectsVolume;
         
         public AudioVolumeChanger(AudioMixer mixer)
         {
@@ -30,19 +31,19 @@ namespace Audio
         
         public void SetMasterVolume(float newVolume)
         {
-            MasterVolume = newVolume;
+            AudioSettingsStorage.MasterVolume = newVolume;
             SetVolume(MasterParam, MasterVolume);
         }
 
         public void SetEffectsVolume(float newVolume)
         {
-            EffectsVolume = newVolume;
+            AudioSettingsStorage.EffectsVolume = newVolume;
             SetVolume(EffectsParam, EffectsVolume);
         }
 
         public void SetMusicVolume(float newVolume)
         {
-            MusicVolume = newVolume;
+            AudioSettingsStorage.MusicVolume = newVolume;
             SetVolume(MusicParam, MusicVolume);
         }
 
