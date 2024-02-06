@@ -2,6 +2,7 @@ using CastExtension;
 using Configs.Cards.EffectCardConfig;
 using EffectsSystem;
 using Entities;
+using Entities.Bosses;
 using Zenject;
 
 namespace Cards.CardsLogics.EffectCards

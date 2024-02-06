@@ -14,6 +14,7 @@ namespace Managers
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Transform fightPoint;
         [SerializeField] private float step;
+        [SerializeField] [Range(0,20)] private int maxEnemyGroupsCount;
 
         [Inject] private BossGroupFactory _bossGroupFactory;
         [Inject] private EnemiesGroupsFactory _enemyGroupsFactory;
@@ -49,6 +50,15 @@ namespace Managers
             bossGroup.OnGroupDie += RemoveEnemyGroup;
             _activeEnemyGroups.Add(bossGroup);
         }
+
+        public bool TrySpawnEnemyGroup(EnemyType enemyType, int enemiesCount)
+        {
+            if (_activeEnemyGroups.Count >= maxEnemyGroupsCount) 
+                return false;
+
+            SpawnEnemyGroup(enemyType, enemiesCount);
+            return true;
+        }
         
         public void SpawnEnemyGroup(EnemyType enemyType, int enemiesCount)
         {
@@ -65,7 +75,8 @@ namespace Managers
                 offset = lastEnemyPos + step - spawnPoint.transform.position.x;
 
             enemyGroup.SetEnemiesCount(enemiesCount);
-            enemyGroup.SetPoints(spawnPoint.position + Vector3.right * offset, fightPoint);
+            var dir = (spawnPoint.position - fightPoint.position).normalized;
+            enemyGroup.SetPoints(spawnPoint.position + dir * offset, fightPoint);
             enemyGroup.OnGroupDie += RemoveEnemyGroup;
             _activeEnemyGroups.Add(enemyGroup);
         }

@@ -74,7 +74,9 @@ namespace Entities.EnemiesGroups
         
         private void Move(float distance)
         {
-            transform.Translate(Vector3.left * distance);
+            var dir = (_fightPoint.position - transform.position).normalized;
+            
+            transform.Translate(dir * distance);
 
             if (transform.position.x <= _fightPoint.position.x)
             {
