@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 1022054795}
   - component: {fileID: 1022054796}
   m_Layer: 0
-  m_Name: cardCreatorWithPauseInstaller
+  m_Name: CardCreatorWithPauseInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,6 +2083,7 @@ MonoBehaviour:
   - {fileID: 1807862260}
   - {fileID: 821255505}
   - {fileID: 755950323}
+  - {fileID: 1022054796}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
