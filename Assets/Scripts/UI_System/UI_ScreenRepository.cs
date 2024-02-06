@@ -51,8 +51,8 @@ namespace UI_System
             {     
                 case ScreenType.MainMenu:
                     return GetScreen<MainMenuScreen>();
-                // case ScreenType.MainMenuRules:
-                //     return GetScreen<MainMenuMissionSelectionScreen>();
+                case ScreenType.Rules:
+                    return GetScreen<RulesScreen>();
                 case ScreenType.GameplayWin:
                     return GetScreen<GameplayWinScreen>();
                 case ScreenType.GameplayMain:
