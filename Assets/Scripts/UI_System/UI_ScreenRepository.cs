@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UI_System.UI_Screens;
 using UnityEngine;
+using AudioSettings = UI_System.UI_Screens.AudioSettings;
 
 namespace UI_System
 {
@@ -58,6 +59,8 @@ namespace UI_System
                     return GetScreen<GameplayMainScreen>();
                 case ScreenType.GameplayLoose:
                     return GetScreen<GameplayLooseScreen>();
+                case ScreenType.AudioSettings:
+                    return GetScreen<AudioSettings>();
                 default:
                     Debug.LogWarning("Error: invalid parameter in GetScreenByEnum(ScreenEnum screen)");
                     return default;

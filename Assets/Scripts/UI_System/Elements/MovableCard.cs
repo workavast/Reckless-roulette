@@ -1,9 +1,12 @@
 using System;
 using Cards;
 using Cards.CardsLogics;
+using EventBusExtension;
+using Events.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI_System.CardUi
 {
@@ -13,6 +16,8 @@ namespace UI_System.CardUi
         [SerializeField] private float cardMoveSpeed;
         [SerializeField] private Image dragTargetImage;
 
+        [Inject] private EventBus _eventBus;
+        
         private CardLogicBase _cardLogicBase;
         private bool _isDrag;
         public int HolderIndex { get; private set; }
@@ -99,7 +104,10 @@ namespace UI_System.CardUi
             {
                 var cardTarget = CastRaycast();
                 if (_cardLogicBase.TryUse(cardTarget))
+                {
                     OnUse?.Invoke(HolderIndex);
+                    _eventBus.Invoke(new CardUse());
+                }
             }
 
             _rectTransform.position = _currentCardLinePosition;

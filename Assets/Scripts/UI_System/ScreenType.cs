@@ -7,5 +7,6 @@ namespace UI_System
         GameplayWin = 20,
         GameplayMain = 30,
         GameplayLoose = 40,
+        AudioSettings = 50,
     }
 }

@@ -4,6 +4,7 @@ using Entities;
 using Entities.EnemiesGroups;
 using EventBusExtension;
 using Events;
+using Events.Audio;
 using GameCycle;
 using PlayerLevelSystem;
 using UnityEngine;
@@ -78,6 +79,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         AttackCooldown.Reset();
         _enemyForFight.TakeDamage(FullAttackDamage);
         OnAttack?.Invoke();
+        _eventBus.Invoke(new SwordUse());
     }
     
     private void Die()
