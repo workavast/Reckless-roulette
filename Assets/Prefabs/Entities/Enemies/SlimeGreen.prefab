@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints:
-    maxValue: 10
-    currentValue: 10
+    maxValue: 20
+    currentValue: 20
     minValue: 0
   attackDamage: 5
   attackSpeed: 15

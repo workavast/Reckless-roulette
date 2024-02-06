@@ -15,208 +15,208 @@ MonoBehaviour:
   <BossCard>k__BackingField: 120
   cards:
     dictionaryCells:
-    - key: 0
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 63d081633c18af44898626949a2d9b70,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 10
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: e01e9bde348807c4c80c8178086f512f,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 20
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: ead2f308c8b15aa4b82b888da616ef8b,
-          type: 3}
-        <Chance>k__BackingField: 1
     - key: 30
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 911eed6a021460045a53ce0c597c3f7e,
           type: 3}
-        <Chance>k__BackingField: 1
-    - key: 40
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 2620de4dc8c914c4ea8d7c04fb5c7f21,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 50
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 85b32ce66dc47014f9b8525acda12400,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 60
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 558156b14aea30847b35036b77180c59,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 70
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 541239e9f1353994ab84a5f75cdc68c9,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 80
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: be94174b3b2e7a6488587a65ad2b1609,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 90
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05a796f5273462a498370f874fcc2729,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 100
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 110
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 1
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 4a9ad255697ce4f45959d1f023274b9b,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 2
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 12978341adc63774eb3234eabb82b026,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 11
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: a8beea9f7cbf1cb48833f92dd8101865,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 12
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5b31bd5721e9eac4986d46893e8b5b35,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 21
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b0df939e03269bd40afa38d83f0db1d3,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 22
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 71781a49534437542b4da9a00cebc967,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 61
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 7dd0b3a809f997c4d83a615aa6ea6a03,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 62
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: c3080503b1a12a5418ab4f5d7ed0dd21,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 71
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05f88d20662147c4c82a894dc5ddbfc9,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 72
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: aa2394a8b9ea319409b7d9908dba71df,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 81
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 9522e5ff7ab8afd4da22c5942f2f81c1,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 82
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5955f318178c33948b8e30f3cd88e495,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 91
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: cfd1eb4e250fd944cbb46607cbb7d870,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 92
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: c1fa901e63189814e984cf3ba234a782,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 101
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: d30c50f29a9b2784cb58feae751ed757,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 102
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 0eab86fb032bbc5479a7e40158976378,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 200
-      value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 996b86fd5c9ca384e9730cd05d5a44c9,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 201
-      value:
-        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 2dd8a0cf4274cd7449f76d1af0872e36,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 202
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: fb7cb4c5ff788f14c9ef9f74de579841,
-          type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 35
     - key: 31
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: dd68c47e89092db4294846483b32a3aa,
           type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 15
     - key: 32
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: c45c0366083855642a84d3d0729d3cf8,
           type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 10
     - key: 33
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: db39f0786b3bc6a458817c48d526285b,
           type: 3}
-        <Chance>k__BackingField: 1
-    - key: 41
+        <Chance>k__BackingField: 5
+    - key: 50
       value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 89084995bc5672442bd76c2741a5f6d5,
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 85b32ce66dc47014f9b8525acda12400,
           type: 3}
-        <Chance>k__BackingField: 1
-    - key: 42
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 65f780dafe96470409766a04fe27f4ed,
-          type: 3}
-        <Chance>k__BackingField: 1
-    - key: 43
-      value:
-        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 5a79eacd2786b0a499393e444a73fcc1,
-          type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 35
     - key: 51
       value:
         <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 374d42b48a60576468a7e5194cf676c9,
           type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 15
     - key: 52
       value:
         <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 62f22cd87900561418c90fdac7eaa4af,
           type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 10
     - key: 53
       value:
         <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 2fb2f8e3e24e6ce40bb21fd1a7cd36c0,
           type: 3}
-        <Chance>k__BackingField: 1
+        <Chance>k__BackingField: 5
+    - key: 40
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 2620de4dc8c914c4ea8d7c04fb5c7f21,
+          type: 3}
+        <Chance>k__BackingField: 35
+    - key: 41
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 89084995bc5672442bd76c2741a5f6d5,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 42
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 65f780dafe96470409766a04fe27f4ed,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 43
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: 5a79eacd2786b0a499393e444a73fcc1,
+          type: 3}
+        <Chance>k__BackingField: 5
     - key: 203
       value:
         <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 0b93bb9962c74f345b3e6ff9f6e35f16,
           type: 3}
         <Chance>k__BackingField: 25
+    - key: 201
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 2dd8a0cf4274cd7449f76d1af0872e36,
+          type: 3}
+        <Chance>k__BackingField: 25
+    - key: 202
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: fb7cb4c5ff788f14c9ef9f74de579841,
+          type: 3}
+        <Chance>k__BackingField: 25
+    - key: 200
+      value:
+        <MovableCard>k__BackingField: {fileID: 1483409676892297515, guid: 996b86fd5c9ca384e9730cd05d5a44c9,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 110
+      value:
+        <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
+          type: 3}
+        <Chance>k__BackingField: 20
+    - key: 10
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: e01e9bde348807c4c80c8178086f512f,
+          type: 3}
+        <Chance>k__BackingField: 25
+    - key: 0
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 63d081633c18af44898626949a2d9b70,
+          type: 3}
+        <Chance>k__BackingField: 20
+    - key: 20
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: ead2f308c8b15aa4b82b888da616ef8b,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 11
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: a8beea9f7cbf1cb48833f92dd8101865,
+          type: 3}
+        <Chance>k__BackingField: 20
+    - key: 1
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 4a9ad255697ce4f45959d1f023274b9b,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 21
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b0df939e03269bd40afa38d83f0db1d3,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 2
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 12978341adc63774eb3234eabb82b026,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 22
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 71781a49534437542b4da9a00cebc967,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 12
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5b31bd5721e9eac4986d46893e8b5b35,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 70
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 541239e9f1353994ab84a5f75cdc68c9,
+          type: 3}
+        <Chance>k__BackingField: 22
+    - key: 60
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 558156b14aea30847b35036b77180c59,
+          type: 3}
+        <Chance>k__BackingField: 17
+    - key: 80
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: be94174b3b2e7a6488587a65ad2b1609,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 71
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05f88d20662147c4c82a894dc5ddbfc9,
+          type: 3}
+        <Chance>k__BackingField: 17
+    - key: 61
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 7dd0b3a809f997c4d83a615aa6ea6a03,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 81
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 9522e5ff7ab8afd4da22c5942f2f81c1,
+          type: 3}
+        <Chance>k__BackingField: 7
+    - key: 72
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: aa2394a8b9ea319409b7d9908dba71df,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 62
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: c3080503b1a12a5418ab4f5d7ed0dd21,
+          type: 3}
+        <Chance>k__BackingField: 7
+    - key: 82
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5955f318178c33948b8e30f3cd88e495,
+          type: 3}
+        <Chance>k__BackingField: 2
+    - key: 90
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05a796f5273462a498370f874fcc2729,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 100
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 91
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: cfd1eb4e250fd944cbb46607cbb7d870,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 101
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: d30c50f29a9b2784cb58feae751ed757,
+          type: 3}
+        <Chance>k__BackingField: 7
+    - key: 92
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: c1fa901e63189814e984cf3ba234a782,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 102
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 0eab86fb032bbc5479a7e40158976378,
+          type: 3}
+        <Chance>k__BackingField: 5
