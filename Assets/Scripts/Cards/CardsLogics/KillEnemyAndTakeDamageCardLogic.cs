@@ -15,7 +15,7 @@ namespace Cards.CardsLogics
         {
             if (target.TryCast(out Enemy enemy))
             {
-                if (target.Cast<BossBase>())
+                if (target.CastPossible<BossBase>())
                     enemy.TakeDamage(7);
                 else
                     enemy.TakeDamage(float.MaxValue);
