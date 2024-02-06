@@ -15,9 +15,7 @@ namespace Cards.CardsLogics.EnemyCards
 
         public override bool TryUse(ICardTarget target)
         {
-            _enemiesFactory.SpawnEnemyGroup(EnemyType, EnemiesCount);
-
-            return true;
+            return  _enemiesFactory.TrySpawnEnemyGroup(EnemyType, EnemiesCount);
         }
     }
 }
