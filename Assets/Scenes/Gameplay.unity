@@ -1432,6 +1432,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 2081181787}
   fightPoint: {fileID: 1557770648}
   step: 2
+  maxEnemyGroupsCount: 4
 --- !u!1 &935793019
 GameObject:
   m_ObjectHideFlags: 0
