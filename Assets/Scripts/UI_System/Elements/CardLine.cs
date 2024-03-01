@@ -72,14 +72,16 @@ namespace UI_System.Elements
 
         public void SpawnBossCard(CardType cardType)
         {
-            var movableCard = _cardFactory.Create(cardType);
+            var movableCard = _cardFactory.Create(cardType, cardParent);
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
             movableCard.transform.position = cardSpawnPos.position;
-            movableCard.transform.SetParent(cardParent);
+            // movableCard.transform.SetParent(cardParent);
             movableCard.SetStartPosition(cardSpawnPos);
             movableCard.OnUse += RemoveCard;
             movableCard.OnReachDestination += CheckFillLine;
+            // movableCard.ResetSize();
+
             
             if (IsFull)
             {
@@ -107,11 +109,11 @@ namespace UI_System.Elements
         {           
             if (IsFull) return;
             
-            var movableCard = _cardFactory.Create(cardType);
+            var movableCard = _cardFactory.Create(cardType, cardParent);
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
             movableCard.transform.position = cardSpawnPos.position;
-            movableCard.transform.SetParent(cardParent);
+            // movableCard.transform.SetParent(cardParent);
             movableCard.SetStartPosition(cardSpawnPos);
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);

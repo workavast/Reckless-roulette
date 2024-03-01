@@ -44,6 +44,19 @@ namespace UI_System.CardUi
         
         public void HandleUpdate(float time) => OnUpdate?.Invoke(time);
 
+        public void ResetSize()
+        {
+            transform.localScale = Vector3.one;
+
+            var offsetMin = _rectTransform.offsetMin;
+            offsetMin.y = 0;
+            _rectTransform.offsetMin = offsetMin;
+            
+            var offsetMax = _rectTransform.offsetMax;
+            offsetMax.y = 0;
+            _rectTransform.offsetMin = offsetMax;
+        }
+        
         //need cus in the awake dont work cus card take spawn position after instantiate
         public void SetStartPosition(Transform startTransform)
         {
