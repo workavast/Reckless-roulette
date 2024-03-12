@@ -18,6 +18,12 @@ namespace UI_System.Elements
         
         private void Start()
         {
+            _playerHero.OnParamsLoad += Init;
+            Init();
+        }
+
+        private void Init()
+        {
             damageLevels.Init(this, _playerHero.DamageLevelSystem);
             healthPointsLevels.Init(this, _playerHero.HealthPointsLevelSystem);
             armorLevels.Init(this, _playerHero.ArmorLevelSystem);

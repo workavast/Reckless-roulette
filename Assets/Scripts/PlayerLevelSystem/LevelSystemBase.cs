@@ -1,6 +1,7 @@
 using EventBusExtension;
 using Events;
 using SomeStorages;
+using UnityEngine;
 
 namespace PlayerLevelSystem
 {
@@ -12,17 +13,22 @@ namespace PlayerLevelSystem
         protected readonly TLevelsConfig LevelsConfig;
         private readonly EventBus _eventBus;
         
-        protected LevelSystemBase(TLevelsConfig levelsConfig, EventBus eventBus)
+        protected LevelSystemBase(TLevelsConfig levelsConfig, EventBus eventBus, int startLevel, float startExp)
         {
             _eventBus = eventBus;
             LevelsConfig = levelsConfig;
-            _levelsCounter = new SomeStorageInt(LevelsConfig.Data.Count-1);
-            _experience = new SomeStorageFloat(LevelsConfig.Data[_levelsCounter.CurrentValue].ExperienceCount);
+            _levelsCounter = new SomeStorageInt(LevelsConfig.Data.Count - 1, startLevel);
+            _experience = new SomeStorageFloat(LevelsConfig.Data[_levelsCounter.CurrentValue].ExperienceCount, startExp);
             
-            eventBus.Subscribe(this);
+            _eventBus.Subscribe(this);
             _experience.OnCurrentValueChange += LevelUp;
         }
 
+        public void Dispose()
+        {
+            _eventBus?.UnSubscribe(this);
+        }
+        
         public void OnEvent(TEvent t)
         {
             TakeExp(t.ExpValue);
@@ -48,7 +54,7 @@ namespace PlayerLevelSystem
             if(_levelsCounter.IsFull)
                 _experience.OnCurrentValueChange -= LevelUp;
         }
-
+        
         protected abstract void ApplyLevelUp();
     }
 }

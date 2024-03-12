@@ -35,6 +35,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
 
     public override event Action OnTakeDamage;
     public override event Action OnAttack;
+    public event Action OnParamsLoad;
 
     protected override void OnAwake()
     {
@@ -49,6 +50,29 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         OnUpdate += Move;
     }
 
+    private void Start()
+    {
+        PlayerHeroSaver.Instance.LoadParams(this);
+    }
+
+    public void LoadParams(PlayerHeroParamsSaves saves)
+    {
+        DamageLevelSystem?.Dispose();
+        HealthPointsLevelSystem?.Dispose();
+        ArmorLevelSystem?.Dispose();
+
+        DamageLevelSystem =
+            new DamageLevelSystem(damageLevelConfig, _eventBus, this, saves.DamageLevel, saves.DamageExp);
+        HealthPointsLevelSystem = 
+            new HealthPointsLevelSystem(healthPointsLevelConfig, _eventBus, healthPoints, saves.HealthLevel, saves.HealthExp);
+        ArmorLevelSystem = 
+            new ArmorLevelSystem(armorLevelConfig, _eventBus, this, saves.ArmorLevel, saves.ArmorExp);
+        
+        healthPoints.SetCurrentValue(saves.CurrentHealth);
+        
+        OnParamsLoad?.Invoke();
+    }
+    
     public void GameCycleUpdate() => HandleUpdate(Time.deltaTime);
     
     public override void TakeDamage(float damage)
@@ -63,9 +87,14 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         OnTakeDamage?.Invoke();
     }
 
+    public void ChangeDamage(float newDamage)
+    {
+        attackDamage = newDamage;
+    }
+    
     public void ChangeArmor(float value)
     {
-        _armor += value;
+        _armor = value;
     }
     
     private void Move(float time)
@@ -80,11 +109,6 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         _enemyForFight.TakeDamage(FullAttackDamage);
         OnAttack?.Invoke();
         _eventBus.Invoke(new SwordUse());
-    }
-    
-    private void Die()
-    {
-        OnDie?.Invoke();
     }
 
     public void OnEvent(EnemyGroupReachFightPoint @event)
@@ -107,6 +131,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
     
     private void OnDestroy()
     {
-        _gameCycleController.RemoveListener(GameCycleState.Gameplay, this);
+        _eventBus?.UnSubscribe(this);
+        _gameCycleController?.RemoveListener(GameCycleState.Gameplay, this);
     }
 }

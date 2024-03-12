@@ -1,6 +1,7 @@
 using EventBusExtension;
 using Events;
 using SomeStorages;
+using UnityEngine;
 
 namespace PlayerLevelSystem
 {
@@ -8,15 +9,22 @@ namespace PlayerLevelSystem
     {
         private readonly SomeStorageFloat _playerHealthPoints;
 
-        public HealthPointsLevelSystem(HealthPointsLevelConfig healthPointsLevelConfig, EventBus eventBus, SomeStorageFloat playerHealthPoints) 
-            : base(healthPointsLevelConfig, eventBus)
+        public HealthPointsLevelSystem(HealthPointsLevelConfig healthPointsLevelConfig, EventBus eventBus,
+            SomeStorageFloat playerHealthPoints, int startLevel = 0, float startExp = 0) 
+            : base(healthPointsLevelConfig, eventBus, startLevel, startExp)
         {
             _playerHealthPoints = playerHealthPoints;
+            
+            var prevMaxValue = _playerHealthPoints.MaxValue;
+            _playerHealthPoints.SetMaxValue(LevelsConfig.Data[LevelsCounter.CurrentValue].Value);
+            _playerHealthPoints.ChangeCurrentValue(_playerHealthPoints.MaxValue - prevMaxValue);
         }
 
         protected override void ApplyLevelUp()
         {
-            _playerHealthPoints.SetMaxValue(_playerHealthPoints.MaxValue + LevelsConfig.Data[LevelsCounter.CurrentValue].Value);
+            var prevMaxValue = _playerHealthPoints.MaxValue;
+            _playerHealthPoints.SetMaxValue(LevelsConfig.Data[LevelsCounter.CurrentValue].Value);
+            _playerHealthPoints.ChangeCurrentValue(_playerHealthPoints.MaxValue - prevMaxValue);
         }
     }
 }

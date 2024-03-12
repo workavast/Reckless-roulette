@@ -7,15 +7,17 @@ namespace PlayerLevelSystem
     {
         private readonly PlayerHero _playerHero;
         
-        public DamageLevelSystem(DamageLevelConfig damageLevelConfig, EventBus eventBus, PlayerHero playerHero) 
-            : base(damageLevelConfig, eventBus)
+        public DamageLevelSystem(DamageLevelConfig damageLevelConfig, EventBus eventBus, PlayerHero playerHero, 
+            int startLevel = 0, float startExp = 0) 
+            : base(damageLevelConfig, eventBus, startLevel, startExp)
         {
             _playerHero = playerHero;
+            _playerHero.ChangeDamage(LevelsConfig.Data[LevelsCounter.CurrentValue].Value);
         }
 
         protected override void ApplyLevelUp()
         {
-            _playerHero.ChangeAdditionalDamage(LevelsConfig.Data[LevelsCounter.CurrentValue].Value,0);
+            _playerHero.ChangeDamage(LevelsConfig.Data[LevelsCounter.CurrentValue].Value);
         }
     }
 }

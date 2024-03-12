@@ -7,11 +7,15 @@ using Managers;
 using UI_System;
 using UI_System.Elements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
-{ 
+{
+    [SerializeField] private locationType nextLocationType;
     [SerializeField] private LocationCardsConfig locationCardsConfig;
+    [SerializeField] private float minTime; 
+    [SerializeField] private float maxTime; 
 
     [Inject] private EventBus _eventBus;
     [Inject] private UI_Controller _uiController;
@@ -20,15 +24,12 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
     [Inject] private PathManager _pathManager;
     [Inject] private GameCycleController _gameCycleController;
 
+    public ReceiverIdentifier ReceiverIdentifier { get; } = new();
+    
     private bool _bossCardSpawned;
     private CardCreatorProcessor _cardCreatorProcessor;
     private Timer _spawnTimer;
-
-    [SerializeField] private float minTime; 
-    [SerializeField] private float maxTime; 
     
-    public ReceiverIdentifier ReceiverIdentifier { get; } = new();
-
     private void Awake()
     {
         _eventBus.Subscribe(this);
@@ -80,17 +81,36 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
         _spawnTimer.SetPause();
         _gameCycleController.SwitchState(GameCycleState.Pause);
         _uiController.SetScreen(ScreenType.GameplayLoose);
+        PlayerHeroSaver.Instance.Dispose();
     }
 
     private void CompleteGame()
     {
         _spawnTimer.SetPause();
+
         _gameCycleController.SwitchState(GameCycleState.Pause);
-        _uiController.SetScreen(ScreenType.GameplayWin);
+        
+        if (nextLocationType == locationType.None)
+        {
+            PlayerHeroSaver.Instance.Dispose();
+            _uiController.SetScreen(ScreenType.GameplayWin);
+        }
+        else
+        {
+            PlayerHeroSaver.Instance.SaveParams(_playerHero);
+            SceneManager.LoadScene(2);
+        }
     }
 
     private void OnDestroy()
     {
-        _eventBus.UnSubscribe(this);
+        _eventBus?.UnSubscribe(this);
     }
+}
+
+enum locationType
+{
+    None = 0,
+    Location1 = 10,
+    Location2 = 20,
 }
