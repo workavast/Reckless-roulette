@@ -15,6 +15,7 @@ namespace UI_System.Elements
         [SerializeField] private CardHolder[] cardHolders;
         [SerializeField] private Transform cardSpawnPos;
         [SerializeField] private Transform cardParent;
+        [SerializeField] private float cardMoveSpeed;
 
         [Inject] private CardFactory _cardFactory;
         [Inject] private DiContainer _container;
@@ -76,12 +77,9 @@ namespace UI_System.Elements
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
             movableCard.transform.position = cardSpawnPos.position;
-            // movableCard.transform.SetParent(cardParent);
-            movableCard.SetStartPosition(cardSpawnPos);
+            movableCard.Init(cardSpawnPos, cardMoveSpeed);
             movableCard.OnUse += RemoveCard;
             movableCard.OnReachDestination += CheckFillLine;
-            // movableCard.ResetSize();
-
             
             if (IsFull)
             {
@@ -113,8 +111,7 @@ namespace UI_System.Elements
             _container.Inject(movableCard);
             //need cus without this card spawned in the center of screen for one frame
             movableCard.transform.position = cardSpawnPos.position;
-            // movableCard.transform.SetParent(cardParent);
-            movableCard.SetStartPosition(cardSpawnPos);
+            movableCard.Init(cardSpawnPos, cardMoveSpeed);
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);
             movableCard.OnReachDestination += CheckFillLine;

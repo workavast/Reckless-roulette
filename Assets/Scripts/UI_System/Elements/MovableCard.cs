@@ -13,23 +13,24 @@ namespace UI_System.CardUi
     [RequireComponent(typeof(RectTransform))]
     public class MovableCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        [SerializeField] private float cardMoveSpeed;
         [SerializeField] private Image dragTargetImage;
 
         [Inject] private EventBus _eventBus;
         
-        private CardLogicBase _cardLogicBase;
-        private bool _isDrag;
         public int HolderIndex { get; private set; }
         public bool IsReachDestination { get; private set; }
         public bool Interactable { get; private set; } = true;
         public Type CardLogicType => _cardLogicBase.MyType;
 
+        private CardLogicBase _cardLogicBase;
         private Vector3 _currentCardLinePosition;
         private RectTransform _rectTransform;
         private Transform _destinationTarget;
+        private float _cardMoveSpeed;
+        private float _moveScale;
         private bool _isMove;
-
+        private bool _isDrag;
+        
         private event Action<float> OnUpdate;
         
         public event Action OnReachDestination;
@@ -37,30 +38,20 @@ namespace UI_System.CardUi
         
         private void Awake()
         {
+            _moveScale = Screen.width / 1080f;
+            
             _cardLogicBase = GetComponent<CardLogicBase>();
             _rectTransform = GetComponent<RectTransform>();
             _currentCardLinePosition = _rectTransform.position;
         }
         
         public void HandleUpdate(float time) => OnUpdate?.Invoke(time);
-
-        public void ResetSize()
-        {
-            transform.localScale = Vector3.one;
-
-            var offsetMin = _rectTransform.offsetMin;
-            offsetMin.y = 0;
-            _rectTransform.offsetMin = offsetMin;
-            
-            var offsetMax = _rectTransform.offsetMax;
-            offsetMax.y = 0;
-            _rectTransform.offsetMin = offsetMax;
-        }
         
         //need cus in the awake dont work cus card take spawn position after instantiate
-        public void SetStartPosition(Transform startTransform)
+        public void Init(Transform startTransform, float moveSpeed)
         {
             _currentCardLinePosition = startTransform.position;
+            _cardMoveSpeed = moveSpeed;
         }
         
         public void SetDestination(int holderIndex, Transform cardHolder)
@@ -77,7 +68,7 @@ namespace UI_System.CardUi
         
         private void Move(float time)
         {
-            _currentCardLinePosition += Vector3.left * (cardMoveSpeed * time);
+            _currentCardLinePosition += Vector3.left * (_cardMoveSpeed * _moveScale * time);
             
             if (_currentCardLinePosition.x <= _destinationTarget.position.x)
             {
