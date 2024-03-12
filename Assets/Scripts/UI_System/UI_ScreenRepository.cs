@@ -61,6 +61,8 @@ namespace UI_System
                     return GetScreen<GameplayLooseScreen>();
                 case ScreenType.AudioSettings:
                     return GetScreen<AudioSettings>();
+                case ScreenType.LocationWin:
+                    return GetScreen<LocationWin>();
                 default:
                     Debug.LogWarning("Error: invalid parameter in GetScreenByEnum(ScreenEnum screen)");
                     return default;

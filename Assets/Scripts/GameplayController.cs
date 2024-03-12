@@ -98,7 +98,7 @@ public class GameplayController : MonoBehaviour, IEventReceiver<BossDie>
         else
         {
             PlayerHeroSaver.Instance.SaveParams(_playerHero);
-            SceneManager.LoadScene(2);
+            _uiController.SetScreen(ScreenType.LocationWin);
         }
     }
 
