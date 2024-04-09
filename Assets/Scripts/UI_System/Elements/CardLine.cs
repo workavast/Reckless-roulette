@@ -29,6 +29,8 @@ namespace UI_System.Elements
         public event Action OnFillLine;
         public event Action OnRemoveCard;
 
+        public event Action<MovableCard> OnCardSpawn;
+        
         private void Awake()
         {
             _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
@@ -80,7 +82,8 @@ namespace UI_System.Elements
             movableCard.Init(cardSpawnPos, cardMoveSpeed);
             movableCard.OnUse += RemoveCard;
             movableCard.OnReachDestination += CheckFillLine;
-            
+            OnCardSpawn?.Invoke(movableCard);
+
             if (IsFull)
             {
                 _bossBuffer = movableCard;
@@ -115,7 +118,8 @@ namespace UI_System.Elements
             movableCard.OnUse += RemoveCard;
             _movableCards.Add(movableCard);
             movableCard.OnReachDestination += CheckFillLine;
-            
+            OnCardSpawn?.Invoke(movableCard);
+
             for (int i = 0; i < cardHolders.Length; i++)
             {
                 if (!cardHolders[i].HaveMovableCard)

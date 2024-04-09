@@ -34,6 +34,10 @@ namespace UI_System.CardUi
         private event Action<float> OnUpdate;
         
         public event Action OnReachDestination;
+        
+        /// <summary>
+        /// return holder index
+        /// </summary>
         public event Action<int> OnUse;
         
         private void Awake()
@@ -94,7 +98,7 @@ namespace UI_System.CardUi
         
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if(!Interactable) return;
+            // if(!Interactable) return;
 
             _isDrag = true;
             dragTargetImage.raycastTarget = false;
