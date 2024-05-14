@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 7419217909359724606}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.65, y: 16.89}
-  m_SizeDelta: {x: 14, y: 14}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1053261917305070904
 CanvasRenderer:
@@ -60,13 +60,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1097652286, guid: c5e95605d38a9104cb512a462ec34392, type: 3}
+  m_Sprite: {fileID: -428823266, guid: 2ea5151054aa23f4c94de7be5c16a4b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -109,10 +109,10 @@ RectTransform:
   m_Father: {fileID: 7419217909359724606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.65, y: 25.26}
-  m_SizeDelta: {x: 14, y: 14}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2651007392662000046
 CanvasRenderer:
@@ -136,13 +136,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1097652286, guid: c5e95605d38a9104cb512a462ec34392, type: 3}
+  m_Sprite: {fileID: -2007199895, guid: 2ea5151054aa23f4c94de7be5c16a4b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -185,10 +185,10 @@ RectTransform:
   m_Father: {fileID: 7419217909359724606}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.65, y: 8.48}
-  m_SizeDelta: {x: 14, y: 14}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4845674309409262659
 CanvasRenderer:
@@ -212,13 +212,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1097652286, guid: c5e95605d38a9104cb512a462ec34392, type: 3}
+  m_Sprite: {fileID: -1680392143, guid: 2ea5151054aa23f4c94de7be5c16a4b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -274,12 +274,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 297560785021450692, guid: edc2bf3383006df49869c8a5758f451f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 507747101128382119, guid: edc2bf3383006df49869c8a5758f451f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1449490074397356168, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2bb04822016847544a6c142447d3515b,
         type: 3}
+    - target: {fileID: 1987001512659667405, guid: edc2bf3383006df49869c8a5758f451f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2624751398092753985, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -390,6 +405,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCardBase
       objectReference: {fileID: 0}
+    - target: {fileID: 4380843479916428859, guid: edc2bf3383006df49869c8a5758f451f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5585683461980432869, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_Sprite
@@ -399,7 +419,7 @@ PrefabInstance:
     - target: {fileID: 8486627292721074130, guid: edc2bf3383006df49869c8a5758f451f,
         type: 3}
       propertyPath: m_fontSize
-      value: 16
+      value: 17.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc2bf3383006df49869c8a5758f451f, type: 3}

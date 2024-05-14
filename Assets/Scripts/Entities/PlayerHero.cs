@@ -43,7 +43,7 @@ public class PlayerHero : EntityBase, IEventReceiver<EnemyGroupReachFightPoint>,
         HealthPointsLevelSystem = new HealthPointsLevelSystem(healthPointsLevelConfig, _eventBus, healthPoints);
         ArmorLevelSystem = new ArmorLevelSystem(armorLevelConfig, _eventBus, this);
             
-        _gameCycleController.AddListener(GameCycleState.Gameplay, this);
+        _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
         
         _eventBus.Subscribe(this);
         

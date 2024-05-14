@@ -191,9 +191,9 @@ namespace UI_System.Elements
 
         private void OnDestroy()
         {
-            _gameCycleController.RemoveListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
-            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
-            _gameCycleController.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
+            _gameCycleController?.RemoveListener(GameCycleState.Gameplay, this as IGameCycleUpdate);
+            _gameCycleController?.AddListener(GameCycleState.Gameplay, this as IGameCycleEnter);
+            _gameCycleController?.AddListener(GameCycleState.Gameplay, this as IGameCycleExit);
         }
         
         private static bool InheritsFrom(Type type, Type baseType)

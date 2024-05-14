@@ -15,7 +15,7 @@ namespace EffectsSystem
         protected EntityBase Entity;
         
         public event Action<EffectBase> OnEffectEnd;
-        public event Action OnEntitySet;
+        protected event Action OnEntitySet;
         
         protected EffectBase(EffectCardConfigBase effectCardConfigBase)
         {
