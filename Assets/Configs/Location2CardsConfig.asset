@@ -100,51 +100,6 @@ MonoBehaviour:
         <MovableCard>k__BackingField: {fileID: 6788851641639372681, guid: d25bec62bbbed954392b682023f73305,
           type: 3}
         <Chance>k__BackingField: 20
-    - key: 10
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: e01e9bde348807c4c80c8178086f512f,
-          type: 3}
-        <Chance>k__BackingField: 25
-    - key: 0
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 63d081633c18af44898626949a2d9b70,
-          type: 3}
-        <Chance>k__BackingField: 20
-    - key: 20
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: ead2f308c8b15aa4b82b888da616ef8b,
-          type: 3}
-        <Chance>k__BackingField: 15
-    - key: 11
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: a8beea9f7cbf1cb48833f92dd8101865,
-          type: 3}
-        <Chance>k__BackingField: 20
-    - key: 1
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 4a9ad255697ce4f45959d1f023274b9b,
-          type: 3}
-        <Chance>k__BackingField: 15
-    - key: 21
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b0df939e03269bd40afa38d83f0db1d3,
-          type: 3}
-        <Chance>k__BackingField: 10
-    - key: 2
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 12978341adc63774eb3234eabb82b026,
-          type: 3}
-        <Chance>k__BackingField: 12
-    - key: 22
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 71781a49534437542b4da9a00cebc967,
-          type: 3}
-        <Chance>k__BackingField: 15
-    - key: 12
-      value:
-        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5b31bd5721e9eac4986d46893e8b5b35,
-          type: 3}
-        <Chance>k__BackingField: 10
     - key: 70
       value:
         <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 541239e9f1353994ab84a5f75cdc68c9,

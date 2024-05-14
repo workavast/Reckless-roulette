@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f769122df29485ca57a92aa6bf506d7, type: 3}
-  m_Name: Location1CardsConfig
+  m_Name: Location1CardsConfig ORIGINAL
   m_EditorClassIdentifier: 
   <BossCard>k__BackingField: 120
   cards:
@@ -190,3 +190,33 @@ MonoBehaviour:
         <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 5955f318178c33948b8e30f3cd88e495,
           type: 3}
         <Chance>k__BackingField: 2
+    - key: 90
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 05a796f5273462a498370f874fcc2729,
+          type: 3}
+        <Chance>k__BackingField: 15
+    - key: 100
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: b867dc09461ae8d4481ccdf35d499958,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 91
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: cfd1eb4e250fd944cbb46607cbb7d870,
+          type: 3}
+        <Chance>k__BackingField: 12
+    - key: 101
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: d30c50f29a9b2784cb58feae751ed757,
+          type: 3}
+        <Chance>k__BackingField: 7
+    - key: 92
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: c1fa901e63189814e984cf3ba234a782,
+          type: 3}
+        <Chance>k__BackingField: 10
+    - key: 102
+      value:
+        <MovableCard>k__BackingField: {fileID: 6170428151825106795, guid: 0eab86fb032bbc5479a7e40158976378,
+          type: 3}
+        <Chance>k__BackingField: 5

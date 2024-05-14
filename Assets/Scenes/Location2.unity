@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLocationType: 0
-  locationCardsConfig: {fileID: 11400000, guid: b66bbed7427e0d34694f5c19ac7e9e63,
+  locationCardsConfig: {fileID: 11400000, guid: 87f28ce44929130409120836e295d594,
     type: 2}
   minTime: 2
   maxTime: 5
